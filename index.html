@@ -105,7 +105,7 @@
   .logo span{color:var(--voltage);}
   .logo .bolt{width:16px;height:16px;color:var(--voltage);flex:none;}
   .nav-right{display:flex;align-items:center;gap:14px;}
-  .nav-links{display:flex;gap:20px;font-size:13.5px;color:var(--muted);}
+  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--muted);}
   .nav-links a:hover{color:var(--bone);}
   .lang-toggle{
     font-family:'IBM Plex Mono',monospace;
@@ -317,80 +317,6 @@
   .video-meta h3{font-size:14.5px;margin-bottom:4px;}
   .video-meta p{font-size:12.5px;}
 
-  /* ---------- about / find us ---------- */
-  .about-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;align-items:start;}
-  @media (max-width:820px){ .about-grid{grid-template-columns:1fr;gap:32px;} }
-  .about-copy p{font-size:15.5px;max-width:56ch;}
-  .about-copy p + p{margin-top:14px;}
-  .contact-card{
-    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-    padding:26px;display:flex;flex-direction:column;gap:16px;
-  }
-  .contact-row{display:flex;align-items:center;gap:12px;font-size:14.5px;}
-  .contact-row .icon-circle{
-    width:38px;height:38px;border-radius:50%;background:var(--surface-2);
-    display:flex;align-items:center;justify-content:center;flex:none;
-    color:var(--voltage);border:1px solid var(--line);
-  }
-  .contact-row .icon-circle svg{width:18px;height:18px;}
-  .contact-row a{color:var(--bone);}
-  .contact-row a:hover{color:var(--voltage);}
-  .social-row{display:flex;gap:12px;margin-top:4px;}
-  .social-row a{
-    width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;color:var(--bone);
-    transition:border-color .15s ease, color .15s ease;
-  }
-  .social-row a:hover{border-color:var(--voltage);color:var(--voltage);}
-  .social-row svg{width:18px;height:18px;}
-
-  /* ---------- pricing ---------- */
-  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  @media (max-width:920px){ .pricing-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:620px){ .pricing-grid{grid-template-columns:1fr;} }
-  .price-card{
-    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-    padding:26px 22px;display:flex;flex-direction:column;gap:14px;position:relative;
-  }
-  .price-card.featured{ border-color:var(--voltage); box-shadow:0 0 0 1px var(--voltage), 0 14px 34px rgba(47,232,212,0.14); }
-  .price-badge{
-    position:absolute;top:-11px;right:22px;
-    background:var(--voltage);color:var(--ink);font-size:11px;font-weight:700;
-    padding:4px 10px;border-radius:999px;letter-spacing:0.04em;
-  }
-  html[dir="rtl"] .price-badge{ right:auto; left:22px; }
-  .price-name{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;}
-  html[dir="rtl"] .price-name{ font-family:'Tajawal',sans-serif; }
-  .price-sessions{font-size:13px;color:var(--muted);}
-  .price-amount-row{display:flex;align-items:baseline;gap:8px;margin-top:6px;flex-wrap:wrap;}
-  .price-amount{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--voltage);}
-  html[dir="rtl"] .price-amount{ font-family:'Tajawal',sans-serif; }
-  .price-original{font-size:14px;color:var(--muted);text-decoration:line-through;}
-  .price-discount{
-    display:inline-block;font-size:11.5px;font-weight:700;color:var(--ink);
-    background:var(--voltage-dim);padding:3px 9px;border-radius:999px;margin-top:2px;width:fit-content;
-  }
-  .price-card .btn{margin-top:8px;width:100%;}
-
-  /* ---------- FAQ ---------- */
-  .faq-list{display:flex;flex-direction:column;gap:10px;max-width:760px;}
-  .faq-item{
-    border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden;
-  }
-  .faq-q{
-    width:100%;text-align:inherit;background:none;border:none;color:var(--bone);
-    padding:18px 20px;font-size:15px;font-weight:600;cursor:pointer;
-    display:flex;justify-content:space-between;align-items:center;gap:12px;
-    font-family:'Inter',sans-serif;
-  }
-  html[dir="rtl"] .faq-q{ font-family:'Tajawal',sans-serif; }
-  .faq-q .chev{width:16px;height:16px;color:var(--voltage);flex:none;transition:transform .2s ease;}
-  .faq-item.open .faq-q .chev{transform:rotate(180deg);}
-  .faq-a{
-    max-height:0;overflow:hidden;transition:max-height .25s ease;
-  }
-  .faq-a-inner{padding:0 20px 18px;font-size:14px;color:var(--muted);max-width:65ch;}
-
   /* ---------- offer / form ---------- */
   .offer{
     background:var(--surface);
@@ -450,19 +376,16 @@
 
 <header>
   <div class="nav">
-    <a class="logo" href="#" id="logo-home" aria-label="Back to top" style="cursor:pointer;">
+    <div class="logo">
       <svg class="bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
       SLIM FIT <span>EMS</span>
-    </a>
+    </div>
     <div class="nav-right">
       <nav class="nav-links">
         <a href="#how" data-i18n="nav-how">How it works</a>
         <a href="#why" data-i18n="nav-why">Why EMS</a>
-        <a href="#about" data-i18n="nav-about">Find Us</a>
         <a href="#locations" data-i18n="nav-locations">Locations</a>
         <a href="#gallery" data-i18n="nav-gallery">Gallery</a>
-        <a href="#pricing" data-i18n="nav-pricing">Pricing</a>
-        <a href="#faq" data-i18n="nav-faq">FAQ</a>
         <a href="#offer" data-i18n="nav-offer">Free trial</a>
       </nav>
       <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">العربية</button>
@@ -584,7 +507,7 @@
         <div class="why-card">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c-4 4-6 7-6 10a6 6 0 0 0 12 0c0-3-2-6-6-10z"/></svg>
           <h3 data-i18n="why3-h3">Nutrition support</h3>
-          <p data-i18n="why3-p">Coaching that goes beyond the session, so results hold outside the gym too.</p>
+          <p data-i18n="why3-p">Coaching that goes beyond the session, so results hold outside the studio too.</p>
         </div>
         <div class="why-card">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
@@ -605,59 +528,25 @@
           stroke="#1d3f3c" stroke-width="1" fill="none"/>
   </svg>
 
-  <!-- ABOUT / FIND US -->
-  <section class="section" id="about">
-    <div class="wrap about-grid">
-      <div class="about-copy">
-        <div class="eyebrow" data-i18n="about-eyebrow">FIND US</div>
-        <h2 data-i18n="about-h2">Slim Fit EMS — fitness, nutrition, and pain relief, all in 20 minutes.</h2>
-        <p data-i18n="about-p1">Slim Fit EMS is an Electrical Muscle Stimulation training gym with two branches in Cairo — Nasr City and Heliopolis. Every session is guided by a trainer, uses a suit that's fitted to you, and runs just 20 minutes.</p>
-        <p data-i18n="about-p2">Beyond the workout, we support clients with nutrition guidance and pain-relief sessions for chronic muscle and joint pain — not just fitness goals.</p>
-      </div>
-      <div class="contact-card">
-        <div class="contact-row">
-          <span class="icon-circle">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"/></svg>
-          </span>
-          <a href="tel:+201030033581" dir="ltr">01030033581</a>
-        </div>
-        <div class="social-row">
-          <a href="https://www.instagram.com/slim_fit_ems" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-          </a>
-          <a href="https://www.facebook.com/SlimFit.Ems/" target="_blank" rel="noopener" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 8h2V5h-2c-2 0-3.5 1.5-3.5 3.5V11H9v3h2.5v6H14v-6h2.3l.4-3H14V8.8c0-.4.3-.8.9-.8z"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- LOCATIONS -->
   <section class="section" id="locations">
     <div class="wrap">
       <div class="section-head">
-        <div class="eyebrow" data-i18n="loc-eyebrow">BRANCHES</div>
-        <h2 data-i18n="loc-h2">Two branches, both easy to get to.</h2>
+        <div class="eyebrow" data-i18n="loc-eyebrow">STUDIOS</div>
+        <h2 data-i18n="loc-h2">Two studios, both easy to get to.</h2>
       </div>
       <div class="loc-grid">
         <div class="loc-card">
-          <div class="tag mono" data-i18n="loc1-tag">BRANCH 01</div>
+          <div class="tag mono" data-i18n="loc1-tag">STUDIO 01</div>
           <h3 data-i18n="loc1-h3">Nasr City</h3>
-          <div class="addr" data-i18n="loc-addr">Cairo, Egypt.</div>
-          <div style="display:flex;gap:16px;flex-wrap:wrap;">
-            <a class="go" href="https://maps.app.goo.gl/tZ1r6EHvRVRQCdVc9" target="_blank" rel="noopener" data-i18n="loc-directions">Get directions →</a>
-            <a class="go" href="#offer" data-i18n="loc-cta">Book a session here →</a>
-          </div>
+          <div class="addr" data-i18n="loc-addr">Cairo, Egypt — message us on WhatsApp for the exact address and directions.</div>
+          <a class="go" href="#offer" data-i18n="loc-cta">Book a session here →</a>
         </div>
         <div class="loc-card">
-          <div class="tag mono" data-i18n="loc2-tag">BRANCH 02</div>
+          <div class="tag mono" data-i18n="loc2-tag">STUDIO 02</div>
           <h3 data-i18n="loc2-h3">Heliopolis</h3>
-          <div class="addr" data-i18n="loc-addr">Cairo, Egypt.</div>
-          <div style="display:flex;gap:16px;flex-wrap:wrap;">
-            <a class="go" href="https://maps.app.goo.gl/arpQB8LL8yESh5ZC6" target="_blank" rel="noopener" data-i18n="loc-directions">Get directions →</a>
-            <a class="go" href="#offer" data-i18n="loc-cta">Book a session here →</a>
-          </div>
+          <div class="addr" data-i18n="loc-addr">Cairo, Egypt — message us on WhatsApp for the exact address and directions.</div>
+          <a class="go" href="#offer" data-i18n="loc-cta">Book a session here →</a>
         </div>
       </div>
     </div>
@@ -674,7 +563,7 @@
       <div class="section-head">
         <div class="eyebrow" data-i18n="gallery-eyebrow">TAKE A LOOK INSIDE</div>
         <h2 data-i18n="gallery-h2">See the branches before you visit.</h2>
-        <p data-i18n="gallery-p">A quick look at the branches in Nasr City and Heliopolis.</p>
+        <p data-i18n="gallery-p">A quick look at the studios in Nasr City and Heliopolis.</p>
       </div>
 
       <div class="gallery-group">
@@ -759,29 +648,6 @@
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section class="section" id="pricing">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow" data-i18n="pricing-eyebrow">PACKAGES</div>
-        <h2 data-i18n="pricing-h2">Simple packages, no surprises.</h2>
-        <p data-i18n="pricing-p">Prices in EGP. Message us on WhatsApp to lock in a package.</p>
-      </div>
-      <div class="pricing-grid" id="pricing-grid"></div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section" id="faq" style="padding-top:0;">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow" data-i18n="faq-eyebrow">FAQ</div>
-        <h2 data-i18n="faq-h2">Questions people usually ask us.</h2>
-      </div>
-      <div class="faq-list" id="faq-list"></div>
-    </div>
-  </section>
-
   <!-- OFFER + FORM -->
   <section class="section" id="offer">
     <div class="wrap">
@@ -807,7 +673,7 @@
             <input id="phone" name="phone" type="tel" data-i18n-ph="form-phone-ph" placeholder="e.g. 010 1234 5678" required>
           </div>
           <div class="field">
-            <label for="location" data-i18n="form-loc-label">Preferred branch</label>
+            <label for="location" data-i18n="form-loc-label">Preferred studio</label>
             <select id="location" name="location">
               <option value="Nasr City" data-i18n="form-opt1">Nasr City</option>
               <option value="Heliopolis" data-i18n="form-opt2">Heliopolis</option>
@@ -885,19 +751,18 @@
     "why2-h3":{en:"Low-impact on joints",ar:"خفيف على المفاصل"},
     "why2-p":{en:"No heavy weights or high-impact strain — suited to every age and fitness level.",ar:"من غير أوزان تقيلة أو إجهاد عالي — مناسب لكل الأعمار ومستويات اللياقة."},
     "why3-h3":{en:"Nutrition support",ar:"دعم غذائي"},
-    "why3-p":{en:"Coaching that goes beyond the session, so results hold outside the gym too.",ar:"متابعة بتكمل بعد الجلسة، عشان النتيجة تفضل ثابتة برا الاستوديو كمان."},
+    "why3-p":{en:"Coaching that goes beyond the session, so results hold outside the studio too.",ar:"متابعة بتكمل بعد الجلسة، عشان النتيجة تفضل ثابتة برا الاستوديو كمان."},
     "why4-h3":{en:"1-on-1 coaching",ar:"تدريب فردي"},
     "why4-p":{en:"A trainer runs every session with you — never a room of machines you're left to figure out.",ar:"مدرب معاك في كل جلسة — مش قاعد لوحدك قدام أجهزة."},
     "why5-h3":{en:"Pain relief",ar:"علاج الألم"},
     "why5-p":{en:"Targeted sessions to ease chronic muscle and joint pain, not just build fitness.",ar:"جلسات مخصصة لتخفيف آلام العضلات والمفاصل المزمنة، مش بس بناء اللياقة."},
-    "loc-eyebrow":{en:"BRANCHES",ar:"الفروع"},
-    "loc-h2":{en:"Two branches, both easy to get to.",ar:"فرعين، سهل توصلهم بسرعة."},
-    "loc1-tag":{en:"BRANCH 01",ar:"فرع 01"},
+    "loc-eyebrow":{en:"STUDIOS",ar:"الفروع"},
+    "loc-h2":{en:"Two studios, both easy to get to.",ar:"فرعين، سهل توصلهم بسرعة."},
+    "loc1-tag":{en:"STUDIO 01",ar:"فرع 01"},
     "loc1-h3":{en:"Nasr City",ar:"مدينة نصر"},
-    "loc2-tag":{en:"BRANCH 02",ar:"فرع 02"},
+    "loc2-tag":{en:"STUDIO 02",ar:"فرع 02"},
     "loc2-h3":{en:"Heliopolis",ar:"مصر الجديدة"},
-    "loc-addr":{en:"Cairo, Egypt.",ar:"القاهرة، مصر."},
-    "loc-directions":{en:"Get directions →",ar:"احصل على الاتجاهات ←"},
+    "loc-addr":{en:"Cairo, Egypt — message us on WhatsApp for the exact address and directions.",ar:"القاهرة، مصر — راسلنا على واتساب للعنوان بالتفصيل واتجاهات الوصول."},
     "loc-cta":{en:"Book a session here →",ar:"احجز جلستك هنا ←"},
     "offer-eyebrow":{en:"LIMITED TRIAL SPOTS / WEEK",ar:"أماكن محدودة للتجربة أسبوعيًا"},
     "offer-h2":{en:"Your first session is on us.",ar:"أول جلسة على حسابنا."},
@@ -910,7 +775,7 @@
     "form-name-ph":{en:"Your name",ar:"اكتب اسمك"},
     "form-phone-label":{en:"Phone number",ar:"رقم الموبايل"},
     "form-phone-ph":{en:"e.g. 010 1234 5678",ar:"مثال: 010 1234 5678"},
-    "form-loc-label":{en:"Preferred branch",ar:"الفرع اللي يناسبك"},
+    "form-loc-label":{en:"Preferred studio",ar:"الفرع اللي يناسبك"},
     "form-opt1":{en:"Nasr City",ar:"مدينة نصر"},
     "form-opt2":{en:"Heliopolis",ar:"مصر الجديدة"},
     "form-opt3":{en:"Not sure yet",ar:"لسه مش متأكد"},
@@ -918,212 +783,13 @@
     "form-note":{en:"Sends straight to our WhatsApp — we'll confirm your time within the day.",ar:"بيتبعت على طول على واتساب، وهنأكد ميعادك في نفس اليوم."},
     "foot-tagline":{en:"20-minute full body EMS training · Nasr City &amp; Heliopolis",ar:"تمرين EMS كامل الجسم في 20 دقيقة · مدينة نصر ومصر الجديدة"},
     "foot-cta-lead":{en:"Prefer to talk first?",ar:"عايز تتكلم معانا الأول؟"},
-    "foot-cta":{en:"Message us on WhatsApp →",ar:"راسلنا على واتساب ←"},
-    "nav-about":{en:"Find Us",ar:"تواصل معنا"},
-    "nav-gallery":{en:"Gallery",ar:"معرض الصور"},
-    "nav-pricing":{en:"Pricing",ar:"الأسعار"},
-    "nav-faq":{en:"FAQ",ar:"الأسئلة الشائعة"},
-    "about-eyebrow":{en:"FIND US",ar:"تواصل معنا"},
-    "about-h2":{en:"Slim Fit EMS — fitness, nutrition, and pain relief, all in 20 minutes.",ar:"Slim Fit EMS — لياقة، تغذية، وعلاج ألم، كل ده في 20 دقيقة."},
-    "about-p1":{en:"Slim Fit EMS is an Electrical Muscle Stimulation training gym with two branches in Cairo — Nasr City and Heliopolis. Every session is guided by a trainer, uses a suit that's fitted to you, and runs just 20 minutes.",ar:"Slim Fit EMS جيم تدريب بالتحفيز الكهربائي للعضلات وله فرعين في القاهرة — مدينة نصر ومصر الجديدة. كل جلسة بإشراف مدرب، وبدلة مظبوطة عليك، ومدتها 20 دقيقة بس."},
-    "about-p2":{en:"Beyond the workout, we support clients with nutrition guidance and pain-relief sessions for chronic muscle and joint pain — not just fitness goals.",ar:"بعد التمرين، بندعم عملاءنا بإرشادات غذائية وجلسات لتخفيف آلام العضلات والمفاصل المزمنة — مش بس أهداف اللياقة."},
-    "gallery-eyebrow":{en:"TAKE A LOOK INSIDE",ar:"شوف الفرع من جوه"},
-    "gallery-h2":{en:"See the branches before you visit.",ar:"شوف الفروع قبل ما تزورنا."},
-    "gallery-p":{en:"A quick look at the branches in Nasr City and Heliopolis.",ar:"جولة سريعة على فروعنا في مدينة نصر ومصر الجديدة."},
-    "gallery-loc1":{en:"NASR CITY",ar:"مدينة نصر"},
-    "gallery-loc2":{en:"HELIOPOLIS",ar:"مصر الجديدة"},
-    "ph-photo":{en:"Branch photo — add here",ar:"صورة الفرع — تُضاف هنا"},
-    "videos-eyebrow":{en:"SEE IT IN ACTION",ar:"شوف التمرين وهو شغال"},
-    "videos-h2":{en:"What a session actually looks like.",ar:"جلسة التمرين شكلها إيه فعليًا."},
-    "videos-p":{en:"Short clips from real sessions — swap these for your Instagram, TikTok, or YouTube links.",ar:"كليبات قصيرة من جلسات حقيقية — ممكن تتغير لروابط انستجرام أو تيك توك أو يوتيوب بتاعتك."},
-    "video-ph-text":{en:"Video placeholder — link your Instagram / TikTok / YouTube clip",ar:"مكان الفيديو — هيتم ربطه بفيديو من انستجرام / تيك توك / يوتيوب"},
-    "video1-title":{en:"Full session walkthrough",ar:"جلسة كاملة من البداية للنهاية"},
-    "video1-sub":{en:"20 minutes, start to finish",ar:"20 دقيقة من الأول للآخر"},
-    "video2-title":{en:"Suit fitting, close up",ar:"تركيب البدلة بالتفصيل"},
-    "video2-sub":{en:"How the EMS suit works",ar:"إزاي بدلة EMS بتشتغل"},
-    "video3-title":{en:"Client results",ar:"نتائج عملائنا"},
-    "video3-sub":{en:"Real member, real progress",ar:"عميل حقيقي وتقدم حقيقي"},
-    "pricing-eyebrow":{en:"PACKAGES",ar:"الباقات"},
-    "pricing-h2":{en:"Simple packages, no surprises.",ar:"باقات واضحة من غير أي مفاجآت."},
-    "pricing-p":{en:"Prices in EGP. Message us on WhatsApp to lock in a package.",ar:"الأسعار بالجنيه المصري. راسلنا على واتساب لحجز باقتك."},
-    "faq-eyebrow":{en:"FAQ",ar:"الأسئلة الشائعة"},
-    "faq-h2":{en:"Questions people usually ask us.",ar:"أسئلة بيسألها الناس عادةً."}
+    "foot-cta":{en:"Message us on WhatsApp →",ar:"راسلنا على واتساب ←"}
   };
 
   const waMessages = {
     en:"Hi Slim Fit EMS! I'd like to book my free trial session.",
     ar:"أهلاً Slim Fit EMS! عايز/عايزة أحجز جلستي التجريبية المجانية."
   };
-
-  /* =========================================================
-     PRICING — edit this array any time to change packages.
-     Set "discountPercent" to 0 for no discount.
-     Set "featured": true on ONE plan to highlight it.
-     ========================================================= */
-  const PRICING_PLANS = [
-    {
-      nameEn: "1 Month", nameAr: "شهر واحد",
-      sessions: 4,
-      price: 1700,
-      discountPercent: 0,
-      featured: false
-    },
-    {
-      nameEn: "2 Months", nameAr: "شهرين",
-      sessions: 8,
-      price: 3200,
-      discountPercent: 10,
-      featured: false
-    },
-    {
-      nameEn: "3 Months", nameAr: "3 شهور",
-      sessions: 12,
-      price: 4400,
-      discountPercent: 15,
-      featured: true
-    },
-    {
-      nameEn: "3 Months PRO", nameAr: "3 شهور برو",
-      sessions: 24,
-      sessionsNoteEn: "2 sessions / week",
-      sessionsNoteAr: "جلستين في الأسبوع",
-      price: 7000,
-      discountPercent: 15,
-      featured: false
-    },
-    {
-      nameEn: "6 Months", nameAr: "6 شهور",
-      sessions: 24,
-      price: 7500,
-      discountPercent: 10,
-      featured: false
-    }
-  ];
-
-  function egp(n){ return n.toLocaleString('en-US'); }
-
-  function renderPricing(lang){
-    const grid = document.getElementById('pricing-grid');
-    if(!grid) return;
-    grid.innerHTML = '';
-    PRICING_PLANS.forEach(function(plan){
-      const finalPrice = plan.discountPercent > 0
-        ? Math.round(plan.price * (1 - plan.discountPercent / 100))
-        : plan.price;
-      const sessionsLabel = lang === 'ar'
-        ? `${plan.sessions} جلسة`
-        : `${plan.sessions} sessions`;
-      const noteLabel = lang === 'ar' ? plan.sessionsNoteAr : plan.sessionsNoteEn;
-      const card = document.createElement('div');
-      card.className = 'price-card' + (plan.featured ? ' featured' : '');
-      card.innerHTML = `
-        ${plan.featured ? `<div class="price-badge">${lang === 'ar' ? 'الأكثر طلبًا' : 'MOST POPULAR'}</div>` : ''}
-        <div class="price-name">${lang === 'ar' ? plan.nameAr : plan.nameEn}</div>
-        <div class="price-sessions">${sessionsLabel}${noteLabel ? ' · ' + noteLabel : ''}</div>
-        <div class="price-amount-row">
-          <div class="price-amount">${egp(finalPrice)} <span style="font-size:14px;">EGP</span></div>
-          ${plan.discountPercent > 0 ? `<div class="price-original">${egp(plan.price)}</div>` : ''}
-        </div>
-        ${plan.discountPercent > 0 ? `<div class="price-discount">${lang === 'ar' ? 'خصم' : 'SAVE'} ${plan.discountPercent}%</div>` : ''}
-        <a class="btn ${plan.featured ? 'btn-volt' : 'btn-ghost'}" target="_blank" rel="noopener" href="${waLink((lang === 'ar' ? 'أهلاً! عايز أعرف تفاصيل باقة ' : 'Hi! I'd like details on the ') + (lang === 'ar' ? plan.nameAr : plan.nameEn) + (lang === 'ar' ? ' باقة.' : ' package.'))}">
-          ${lang === 'ar' ? 'اسأل على واتساب' : 'Ask on WhatsApp'}
-        </a>
-      `;
-      grid.appendChild(card);
-    });
-  }
-
-  /* =========================================================
-     FAQ — edit this array any time to change questions.
-     ========================================================= */
-  const FAQ_ITEMS = [
-    {
-      qEn: "What is EMS training?",
-      qAr: "ما هو تدريب EMS؟",
-      aEn: "EMS (Electrical Muscle Stimulation) training uses a suit that sends low-level electrical impulses into your muscles during simple movements, activating far more muscle fibers than regular training — in just 20 minutes.",
-      aAr: "تدريب EMS (التحفيز الكهربائي للعضلات) بيستخدم بدلة بتبعت نبضات كهربائية خفيفة لعضلاتك وقت الحركة، وده بينشط عدد أكبر من ألياف العضلات مقارنة بالتمرين العادي — في 20 دقيقة بس."
-    },
-    {
-      qEn: "Is EMS training safe?",
-      qAr: "هل تدريب EMS أمان؟",
-      aEn: "Yes, when done under a certified trainer's supervision, as it is at Slim Fit EMS. It's not suitable for people with pacemakers, certain heart conditions, epilepsy, or during pregnancy — always tell your trainer about any health conditions before your first session.",
-      aAr: "أيوه، لما يكون تحت إشراف مدرب متخصص، زي ما بيحصل في Slim Fit EMS. مش مناسب لأصحاب منظم ضربات القلب، أو بعض حالات القلب، أو الصرع، أو الحمل — قول لمدربك عن أي حالة صحية قبل أول جلسة."
-    },
-    {
-      qEn: "Does it hurt?",
-      qAr: "هل الجلسة بتوجع؟",
-      aEn: "No — most people describe it as a tingling or buzzing sensation, not pain. Your trainer adjusts the intensity to your comfort level throughout the session.",
-      aAr: "لا — أغلب الناس بيوصفوه بإنه إحساس نبض أو دغدغة، مش ألم. المدرب بيضبط شدة الإشارة على حسب راحتك طول الجلسة."
-    },
-    {
-      qEn: "How long is a session and how often should I come?",
-      qAr: "الجلسة قد إيه ومرة كل قد إيه؟",
-      aEn: "Each session is 20 minutes of active training (about 30 minutes total with suiting up). Most clients see the best results training twice a week.",
-      aAr: "كل جلسة 20 دقيقة تمرين فعلي (حوالي 30 دقيقة إجمالي مع لبس البدلة). أغلب العملاء بيحققوا أفضل نتيجة بجلستين في الأسبوع."
-    },
-    {
-      qEn: "What should I wear or bring?",
-      qAr: "هلبس إيه أو هجيب معايا إيه؟",
-      aEn: "Nothing special — no gym clothes needed. We provide the suit and undergarments; just bring yourself and a bottle of water.",
-      aAr: "مفيش لبس مخصوص مطلوب. إحنا بنوفر البدلة والملابس الداخلية المخصصة؛ إنت بس هات نفسك وزجاجة مية."
-    },
-    {
-      qEn: "Do you offer nutrition guidance too?",
-      qAr: "بتقدموا استشارات تغذية كمان؟",
-      aEn: "Yes — nutrition support is part of our coaching, so results from your sessions hold up outside the gym as well.",
-      aAr: "أيوه — الدعم الغذائي جزء من متابعتنا، عشان نتيجة تمرينك تفضل ثابتة برا الجيم كمان."
-    },
-    {
-      qEn: "I have joint or back pain — can EMS help?",
-      qAr: "عندي ألم في المفاصل أو الظهر — هل EMS يساعد؟",
-      aEn: "EMS is low-impact on joints and tendons and is often used for pain relief and rehabilitation. Tell your trainer about the specific pain so the session can be adjusted for you.",
-      aAr: "تدريب EMS خفيف على المفاصل والأوتار وبيستخدم كثير في تخفيف الألم والتعافي. قول لمدربك عن الألم بالتفصيل عشان يظبط الجلسة على حالتك."
-    },
-    {
-      qEn: "Where are your branches?",
-      qAr: "فروعكم فين؟",
-      aEn: "We have two branches in Cairo: Nasr City and Heliopolis. See the Locations section above for directions to each.",
-      aAr: "لينا فرعين في القاهرة: مدينة نصر ومصر الجديدة. شوف قسم الفروع فوق للاتجاهات لكل فرع."
-    }
-  ];
-
-  function renderFAQ(lang){
-    const list = document.getElementById('faq-list');
-    if(!list) return;
-    list.innerHTML = '';
-    FAQ_ITEMS.forEach(function(item, i){
-      const wrap = document.createElement('div');
-      wrap.className = 'faq-item';
-      wrap.innerHTML = `
-        <button class="faq-q" type="button" aria-expanded="false">
-          <span>${lang === 'ar' ? item.qAr : item.qEn}</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">${lang === 'ar' ? item.aAr : item.aEn}</div></div>
-      `;
-      const btn = wrap.querySelector('.faq-q');
-      const answer = wrap.querySelector('.faq-a');
-      btn.addEventListener('click', function(){
-        const isOpen = wrap.classList.contains('open');
-        list.querySelectorAll('.faq-item.open').forEach(function(openItem){
-          openItem.classList.remove('open');
-          openItem.querySelector('.faq-a').style.maxHeight = null;
-          openItem.querySelector('.faq-q').setAttribute('aria-expanded','false');
-        });
-        if(!isOpen){
-          wrap.classList.add('open');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-          btn.setAttribute('aria-expanded','true');
-        }
-      });
-      list.appendChild(wrap);
-    });
-  }
-
-  document.getElementById('logo-home').addEventListener('click', function(e){
-    e.preventDefault();
-    window.scrollTo({top:0, behavior:'smooth'});
-  });
 
   (function buildDotwave(){
     const svg = document.getElementById('dotwave-svg');
@@ -1193,7 +859,7 @@
     const location = locationSelect.options[locationSelect.selectedIndex].text;
     const msg = (currentLang === 'ar')
       ? `أهلاً Slim Fit EMS! عايز أحجز جلسة تجريبية مجانية.\nالاسم: ${name}\nالموبايل: ${phone}\nالفرع: ${location}`
-      : `Hi Slim Fit EMS! I'd like to book a free trial session.\nName: ${name}\nPhone: ${phone}\nPreferred branch: ${location}`;
+      : `Hi Slim Fit EMS! I'd like to book a free trial session.\nName: ${name}\nPhone: ${phone}\nPreferred studio: ${location}`;
     window.open(waLink(msg), '_blank');
   });
 </script>
