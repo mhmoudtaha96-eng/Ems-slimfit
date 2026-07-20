@@ -272,6 +272,51 @@
   .loc-card .go{ margin-top:6px;font-size:13px;color:var(--bone); display:inline-flex;align-items:center;gap:6px; }
   @media (max-width:700px){ .loc-grid{grid-template-columns:1fr;} }
 
+  /* ---------- gallery (branch photos) ---------- */
+  .gallery-group{margin-bottom:34px;}
+  .gallery-group-label{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--voltage);
+    text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px;
+  }
+  html[dir="rtl"] .gallery-group-label{font-family:'Tajawal',sans-serif;letter-spacing:0;font-size:13px;}
+  .gallery-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media (max-width:700px){ .gallery-row{grid-template-columns:1fr 1fr;} }
+  .ph-tile{
+    aspect-ratio:4/3;border-radius:12px;
+    border:1.5px dashed var(--line);
+    background:var(--surface);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:8px;color:var(--muted);
+    transition:border-color .15s ease;
+  }
+  .ph-tile:hover{border-color:var(--voltage);}
+  .ph-tile svg{width:26px;height:26px;color:var(--voltage-dim);}
+  .ph-tile span{font-size:11.5px;text-align:center;padding:0 10px;line-height:1.4;}
+
+  /* ---------- video placeholders ---------- */
+  .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media (max-width:820px){ .video-grid{grid-template-columns:1fr;} }
+  .video-card{
+    border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--surface);overflow:hidden;
+  }
+  .video-ph{
+    aspect-ratio:16/10;
+    border-bottom:1.5px dashed var(--line);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:10px;color:var(--muted);position:relative;
+  }
+  .video-ph .play{
+    width:48px;height:48px;border-radius:50%;
+    background:var(--voltage);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .video-ph .play svg{width:18px;height:18px;}
+  .video-ph span{font-size:11.5px;padding:0 16px;text-align:center;line-height:1.4;}
+  .video-meta{padding:14px 16px;}
+  .video-meta h3{font-size:14.5px;margin-bottom:4px;}
+  .video-meta p{font-size:12.5px;}
+
   /* ---------- offer / form ---------- */
   .offer{
     background:var(--surface);
@@ -340,6 +385,7 @@
         <a href="#how" data-i18n="nav-how">How it works</a>
         <a href="#why" data-i18n="nav-why">Why EMS</a>
         <a href="#locations" data-i18n="nav-locations">Locations</a>
+        <a href="#gallery" data-i18n="nav-gallery">Gallery</a>
         <a href="#offer" data-i18n="nav-offer">Free trial</a>
       </nav>
       <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">العربية</button>
@@ -501,6 +547,102 @@
           <h3 data-i18n="loc2-h3">Heliopolis</h3>
           <div class="addr" data-i18n="loc-addr">Cairo, Egypt — message us on WhatsApp for the exact address and directions.</div>
           <a class="go" href="#offer" data-i18n="loc-cta">Book a session here →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="divider wrap" viewBox="0 0 1120 34" preserveAspectRatio="none">
+    <path d="M0,17 L400,17 L420,17 L430,4 L442,30 L452,17 L470,17 L720,17 L735,17 L745,4 L757,30 L767,17 L1120,17"
+          stroke="#1d3f3c" stroke-width="1" fill="none"/>
+  </svg>
+
+  <!-- GALLERY: BRANCH PHOTOS -->
+  <section class="section" id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow" data-i18n="gallery-eyebrow">TAKE A LOOK INSIDE</div>
+        <h2 data-i18n="gallery-h2">See the branches before you visit.</h2>
+        <p data-i18n="gallery-p">A quick look at the studios in Nasr City and Heliopolis.</p>
+      </div>
+
+      <div class="gallery-group">
+        <div class="gallery-group-label mono" data-i18n="gallery-loc1">NASR CITY</div>
+        <div class="gallery-row">
+          <div class="ph-tile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>
+            <span data-i18n="ph-photo">Branch photo — add here</span>
+          </div>
+          <div class="ph-tile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>
+            <span data-i18n="ph-photo">Branch photo — add here</span>
+          </div>
+          <div class="ph-tile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>
+            <span data-i18n="ph-photo">Branch photo — add here</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-group">
+        <div class="gallery-group-label mono" data-i18n="gallery-loc2">HELIOPOLIS</div>
+        <div class="gallery-row">
+          <div class="ph-tile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>
+            <span data-i18n="ph-photo">Branch photo — add here</span>
+          </div>
+          <div class="ph-tile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>
+            <span data-i18n="ph-photo">Branch photo — add here</span>
+          </div>
+          <div class="ph-tile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>
+            <span data-i18n="ph-photo">Branch photo — add here</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAINING VIDEOS -->
+  <section class="section" id="videos" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow" data-i18n="videos-eyebrow">SEE IT IN ACTION</div>
+        <h2 data-i18n="videos-h2">What a session actually looks like.</h2>
+        <p data-i18n="videos-p">Short clips from real sessions — swap these for your Instagram, TikTok, or YouTube links.</p>
+      </div>
+      <div class="video-grid">
+        <!-- To activate: wrap in <a href="YOUR_VIDEO_URL" target="_blank"> and replace the thumbnail -->
+        <div class="video-card">
+          <div class="video-ph">
+            <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+            <span data-i18n="video-ph-text">Video placeholder — link your Instagram / TikTok / YouTube clip</span>
+          </div>
+          <div class="video-meta">
+            <h3 data-i18n="video1-title">Full session walkthrough</h3>
+            <p data-i18n="video1-sub">20 minutes, start to finish</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-ph">
+            <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+            <span data-i18n="video-ph-text">Video placeholder — link your Instagram / TikTok / YouTube clip</span>
+          </div>
+          <div class="video-meta">
+            <h3 data-i18n="video2-title">Suit fitting, close up</h3>
+            <p data-i18n="video2-sub">How the EMS suit works</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-ph">
+            <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+            <span data-i18n="video-ph-text">Video placeholder — link your Instagram / TikTok / YouTube clip</span>
+          </div>
+          <div class="video-meta">
+            <h3 data-i18n="video3-title">Client results</h3>
+            <p data-i18n="video3-sub">Real member, real progress</p>
+          </div>
         </div>
       </div>
     </div>
