@@ -1025,7 +1025,7 @@
           ${plan.discountPercent > 0 ? `<div class="price-original">${egp(plan.price)}</div>` : ''}
         </div>
         ${plan.discountPercent > 0 ? `<div class="price-discount">${lang === 'ar' ? 'خصم' : 'SAVE'} ${plan.discountPercent}%</div>` : ''}
-        <a class="btn ${plan.featured ? 'btn-volt' : 'btn-ghost'}" target="_blank" rel="noopener" href="${waLink((lang === 'ar' ? 'أهلاً! عايز أعرف تفاصيل باقة ' : 'Hi! I\\'d like details on the ') + (lang === 'ar' ? plan.nameAr : plan.nameEn) + (lang === 'ar' ? ' باقة.' : ' package.'))}">
+        <a class="btn ${plan.featured ? 'btn-volt' : 'btn-ghost'}" target="_blank" rel="noopener" href="${waLink((lang === 'ar' ? 'أهلاً! عايز أعرف تفاصيل باقة ' : 'Hi! I'd like details on the ') + (lang === 'ar' ? plan.nameAr : plan.nameEn) + (lang === 'ar' ? ' باقة.' : ' package.'))}">
           ${lang === 'ar' ? 'اسأل على واتساب' : 'Ask on WhatsApp'}
         </a>
       `;
