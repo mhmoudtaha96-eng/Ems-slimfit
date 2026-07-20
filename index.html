@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slim Fit EMS Fitness Club — 20-Minute Full Body Training in Cairo</title>
+<meta name="description" content="Slim Fit EMS — 20-minute full body EMS training in Nasr City & Heliopolis. Book your free trial on WhatsApp today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#081c1b;
+    --surface:#0f2c2a;
+    --surface-2:#123634;
+    --bone:#f4f8f7;
+    --muted:#84aaa7;
+    --voltage:#2fe8d4;
+    --voltage-dim:#1c9c8c;
+    --line:#1d3f3c;
+    --radius:14px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--bone);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk',sans-serif;
+    margin:0;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+    letter-spacing:0.04em;
+  }
+  p{margin:0;color:var(--muted);line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  section{position:relative;}
+
+  ::selection{background:var(--voltage);color:var(--ink);}
+
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+    outline:2px solid var(--voltage);
+    outline-offset:3px;
+  }
+
+  /* ---------- RTL / Arabic ---------- */
+  html[dir="rtl"] body,
+  html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3,
+  html[dir="rtl"] .mono{
+    font-family:'Tajawal',sans-serif;
+    letter-spacing:0;
+  }
+  html[dir="rtl"] .float-wa{ right:auto; left:22px; }
+  html[dir="rtl"] .stat-num span{ font-size:14px; }
+
+  /* ---------- eyebrow ---------- */
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--voltage);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  html[dir="rtl"] .eyebrow{ font-family:'Tajawal',sans-serif; letter-spacing:0; font-size:13px; }
+  .eyebrow::before{
+    content:"";
+    width:7px;height:7px;border-radius:50%;
+    background:var(--voltage);
+    box-shadow:0 0 10px var(--voltage);
+    animation:blink 1.6s ease-in-out infinite;
+    flex:none;
+  }
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.25;}}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(8,28,27,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:16px 24px;max-width:1120px;margin:0 auto;
+  }
+  .logo{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;font-size:19px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .logo span{color:var(--voltage);}
+  .logo .bolt{width:16px;height:16px;color:var(--voltage);flex:none;}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--muted);}
+  .nav-links a:hover{color:var(--bone);}
+  .lang-toggle{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;letter-spacing:0.06em;
+    border:1px solid var(--line);border-radius:999px;
+    padding:8px 14px;cursor:pointer;background:transparent;color:var(--bone);
+  }
+  .lang-toggle:hover{border-color:var(--voltage);color:var(--voltage);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:12px 22px;border-radius:999px;
+    font-weight:600;font-size:14px;
+    border:1px solid transparent;
+    cursor:pointer;transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .btn-volt{
+    background:var(--voltage);color:var(--ink);
+  }
+  .btn-volt:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(47,232,212,0.28);}
+  .btn-ghost{
+    border-color:var(--line);color:var(--bone);
+    background:transparent;
+  }
+  .btn-ghost:hover{border-color:var(--voltage);color:var(--voltage);}
+  .btn-sm{padding:9px 16px;font-size:13px;}
+
+  @media (max-width:820px){ .nav-links{display:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:64px 0 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .dotwave{
+    position:absolute;right:-60px;bottom:-40px;width:520px;height:340px;
+    opacity:0.35;pointer-events:none;
+    z-index:0;
+  }
+  html[dir="rtl"] .dotwave{ right:auto; left:-60px; transform:scaleX(-1); }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;
+    position:relative;z-index:1;
+  }
+  .tagline{
+    font-size:13px;color:var(--bone);opacity:0.75;margin:10px 0 0;
+    letter-spacing:0.03em;
+  }
+  html[dir="rtl"] .tagline{ letter-spacing:0; }
+  .hero h1{
+    font-size:clamp(32px,5.2vw,56px);
+    margin:16px 0 20px;
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--voltage);
+  }
+  .hero p.lead{
+    font-size:17px;max-width:46ch;margin-bottom:30px;
+  }
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px;}
+  .hero-note{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+
+  .pulse-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 22px 18px;
+    position:relative;
+    overflow:hidden;
+    z-index:1;
+  }
+  .pulse-card svg{width:100%;height:auto;display:block;}
+  .pulse-label{
+    display:flex;justify-content:space-between;
+    font-size:11px;color:var(--muted);margin-top:14px;
+  }
+  .pulse-readout{
+    font-family:'IBM Plex Mono',monospace;color:var(--voltage);font-size:12px;
+  }
+  html[dir="rtl"] .pulse-readout{ font-family:'Tajawal',sans-serif; }
+
+  #pulse-path{
+    stroke-dasharray:900;
+    stroke-dashoffset:900;
+    animation:draw 3.2s ease-in-out infinite;
+  }
+  @keyframes draw{
+    0%{stroke-dashoffset:900;}
+    55%{stroke-dashoffset:0;}
+    100%{stroke-dashoffset:-900;}
+  }
+
+  .divider{ width:100%;height:34px; display:block; opacity:0.55; }
+  .divider path{
+    stroke-dasharray:1400;
+    stroke-dashoffset:1400;
+    animation:drawslow 6s linear infinite;
+  }
+  @keyframes drawslow{
+    0%{stroke-dashoffset:1400;}
+    100%{stroke-dashoffset:0;}
+  }
+
+  /* ---------- stat strip ---------- */
+  .stats{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:26px 0;
+  }
+  .stats-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;
+  }
+  .stat-num{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:clamp(22px,3vw,32px);color:var(--voltage);
+  }
+  html[dir="rtl"] .stat-num{ font-family:'Tajawal',sans-serif; }
+  .stat-label{font-size:12px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;}
+  html[dir="rtl"] .stat-label{ letter-spacing:0; font-size:13px; }
+  @media (max-width:700px){ .stats-grid{grid-template-columns:repeat(2,1fr);row-gap:26px;} }
+
+  /* ---------- generic section heading ---------- */
+  .section{padding:80px 0;}
+  .section-head{max-width:640px;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(26px,3.6vw,38px);margin-top:14px;}
+  .section-head p{margin-top:14px;font-size:16px;}
+
+  /* ---------- how it works ---------- */
+  .steps{ display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
+  .step{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 22px;position:relative;
+  }
+  .step-index{ font-family:'IBM Plex Mono',monospace;color:var(--voltage-dim);font-size:13px; }
+  html[dir="rtl"] .step-index{ font-family:'Tajawal',sans-serif; font-weight:700; }
+  .step h3{font-size:19px;margin:14px 0 10px;}
+  .step p{font-size:14px;}
+  @media (max-width:760px){ .steps{grid-template-columns:1fr;} }
+
+  /* ---------- why grid ---------- */
+  .why-grid{ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px; }
+  .why-card{
+    padding:22px 18px;border:1px solid var(--line);border-radius:var(--radius);
+    background:linear-gradient(180deg, rgba(47,232,212,0.05), transparent);
+  }
+  .why-card .ico{ width:34px;height:34px;color:var(--voltage);margin-bottom:14px; }
+  .why-card h3{font-size:16px;margin-bottom:8px;}
+  .why-card p{font-size:13.5px;}
+
+  /* ---------- locations ---------- */
+  .loc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .loc-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;display:flex;flex-direction:column;gap:12px;
+  }
+  .loc-card .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--voltage);
+    text-transform:uppercase;letter-spacing:0.08em;
+  }
+  html[dir="rtl"] .loc-card .tag{ font-family:'Tajawal',sans-serif; letter-spacing:0; font-size:12px; }
+  .loc-card h3{font-size:21px;}
+  .loc-card .addr{font-size:14px;color:var(--muted);}
+  .loc-card .go{ margin-top:6px;font-size:13px;color:var(--bone); display:inline-flex;align-items:center;gap:6px; }
+  @media (max-width:700px){ .loc-grid{grid-template-columns:1fr;} }
+
+  /* ---------- offer / form ---------- */
+  .offer{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:20px;
+    display:grid;grid-template-columns:1fr 1fr;
+    overflow:hidden;
+  }
+  .offer-copy{padding:44px 40px;display:flex;flex-direction:column;justify-content:center;}
+  .offer-copy h2{font-size:clamp(24px,3vw,32px);margin:14px 0 14px;}
+  .offer-list{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:10px;}
+  .offer-list li{font-size:14px;color:var(--bone);display:flex;gap:10px;align-items:flex-start;}
+  .offer-list li::before{
+    content:"";width:6px;height:6px;border-radius:50%;background:var(--voltage);
+    margin-top:7px;flex:none;
+  }
+  .offer-form{ background:var(--surface-2);padding:44px 40px; display:flex;flex-direction:column;gap:14px; }
+  .field label{
+    display:block;font-size:12px;color:var(--muted);margin-bottom:6px;
+    text-transform:uppercase;letter-spacing:0.05em;
+  }
+  html[dir="rtl"] .field label{ letter-spacing:0; font-size:13px; }
+  .field input,.field select{
+    width:100%;padding:12px 14px;border-radius:9px;
+    background:var(--ink);border:1px solid var(--line);color:var(--bone);
+    font-family:'Inter',sans-serif;font-size:14px;
+  }
+  html[dir="rtl"] .field input, html[dir="rtl"] .field select{ font-family:'Tajawal',sans-serif; }
+  .field input::placeholder{color:#5c7c79;}
+  .field input:focus,.field select:focus{border-color:var(--voltage);}
+  .offer-form .btn{width:100%;margin-top:6px;padding:14px;font-size:15px;}
+  .form-note{font-size:12px;color:var(--muted);text-align:center;}
+
+  @media (max-width:820px){ .offer{grid-template-columns:1fr;} }
+
+  /* ---------- footer ---------- */
+  footer{ border-top:1px solid var(--line); padding:40px 0 90px; }
+  .foot-grid{ display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px; font-size:13px;color:var(--muted); }
+  .foot-grid .logo{margin-bottom:6px;}
+
+  /* ---------- floating whatsapp ---------- */
+  .float-wa{
+    position:fixed;bottom:22px;right:22px;z-index:60;
+    background:var(--voltage);color:var(--ink);
+    width:56px;height:56px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  }
+  .float-wa svg{width:26px;height:26px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001s !important; animation-iteration-count:1 !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">
+      <svg class="bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+      SLIM FIT <span>EMS</span>
+    </div>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="#how" data-i18n="nav-how">How it works</a>
+        <a href="#why" data-i18n="nav-why">Why EMS</a>
+        <a href="#locations" data-i18n="nav-locations">Locations</a>
+        <a href="#offer" data-i18n="nav-offer">Free trial</a>
+      </nav>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">العربية</button>
+      <a class="btn btn-volt btn-sm" id="wa-header" href="#" target="_blank" rel="noopener" data-i18n="nav-wa">WhatsApp us</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="dotwave" viewBox="0 0 520 340" fill="none" id="dotwave-svg"></svg>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow" data-i18n="hero-eyebrow">NASR CITY &amp; HELIOPOLIS, CAIRO</div>
+        <div class="tagline" data-i18n="hero-tagline">Fitness · Nutrition · Pain Relief</div>
+        <h1 data-i18n="hero-h1">One 20-minute session.<br>Every muscle fires <em>at once.</em></h1>
+        <p class="lead" data-i18n="hero-lead">Slim Fit EMS straps you into a suit that sends your muscles the same signal your brain does — to more fibers, all at once. 20 minutes in, and you've trained like you were at the gym for 90.</p>
+        <div class="hero-cta">
+          <a class="btn btn-volt" id="wa-hero" href="#" target="_blank" rel="noopener" data-i18n="hero-cta1">
+            Book free trial on WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="#offer" data-i18n="hero-cta2">Fill the form instead</a>
+        </div>
+        <div class="hero-note">
+          <span class="mono" data-i18n="hero-note">NO SUIT TO BUY · NO GYM CLOTHES NEEDED</span>
+        </div>
+      </div>
+
+      <div class="pulse-card">
+        <svg viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="60" x2="400" y2="60" stroke="#1d3f3c" stroke-width="1"/>
+          <path id="pulse-path" d="M0,60 L60,60 L75,60 L85,20 L95,100 L105,60 L130,60 L145,60 L155,30 L165,90 L175,60 L400,60"
+                stroke="#2fe8d4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                style="filter:drop-shadow(0 0 6px rgba(47,232,212,0.65));"/>
+        </svg>
+        <div class="pulse-label">
+          <span data-i18n="pulse-label1">MUSCLE SIGNAL</span>
+          <span class="pulse-readout" data-i18n="pulse-label2">● LIVE READOUT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="divider wrap" viewBox="0 0 1120 34" preserveAspectRatio="none">
+    <path d="M0,17 L400,17 L420,17 L430,4 L442,30 L452,17 L470,17 L720,17 L735,17 L745,4 L757,30 L767,17 L1120,17"
+          stroke="#1d3f3c" stroke-width="1" fill="none"/>
+  </svg>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="wrap stats-grid">
+      <div>
+        <div class="stat-num">20<span style="font-size:14px;" data-i18n="stat1-unit">min</span></div>
+        <div class="stat-label" data-i18n="stat1-label">Per session</div>
+      </div>
+      <div>
+        <div class="stat-num">90%</div>
+        <div class="stat-label" data-i18n="stat2-label">Muscle fibers engaged</div>
+      </div>
+      <div>
+        <div class="stat-num">36K</div>
+        <div class="stat-label" data-i18n="stat3-label">Contractions / session</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label" data-i18n="stat4-label">Cairo locations</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow" data-i18n="how-eyebrow">THE SESSION</div>
+        <h2 data-i18n="how-h2">Three steps, twenty minutes, no equipment to figure out.</h2>
+        <p data-i18n="how-p">This is a real sequence — you move through it in order, every visit.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-index mono" data-i18n="step1-index">01 / SUIT UP</div>
+          <h3 data-i18n="step1-h3">Your trainer fits the suit</h3>
+          <p data-i18n="step1-p">No gym clothes needed — a sterilized EMS suit goes on in under five minutes, positioned to your body.</p>
+        </div>
+        <div class="step">
+          <div class="step-index mono" data-i18n="step2-index">02 / TRAIN</div>
+          <h3 data-i18n="step2-h3">20 minutes, low-impact movement</h3>
+          <p data-i18n="step2-p">Simple guided exercises while impulses do the deep work — easy on joints and tendons, hard on muscle fibers.</p>
+        </div>
+        <div class="step">
+          <div class="step-index mono" data-i18n="step3-index">03 / RECOVER &amp; REPEAT</div>
+          <h3 data-i18n="step3-h3">Most clients train twice a week</h3>
+          <p data-i18n="step3-p">Paired with nutrition guidance, that's usually enough to see real change inside a month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="section" id="why" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow" data-i18n="why-eyebrow">WHY EMS</div>
+        <h2 data-i18n="why-h2">Built for people who don't have two hours a day to give the gym.</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+          <h3 data-i18n="why1-h3">Build muscle, burn fat</h3>
+          <p data-i18n="why1-p">Deep, simultaneous contractions across major muscle groups in a fraction of the time.</p>
+        </div>
+        <div class="why-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <h3 data-i18n="why2-h3">Low-impact on joints</h3>
+          <p data-i18n="why2-p">No heavy weights or high-impact strain — suited to every age and fitness level.</p>
+        </div>
+        <div class="why-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c-4 4-6 7-6 10a6 6 0 0 0 12 0c0-3-2-6-6-10z"/></svg>
+          <h3 data-i18n="why3-h3">Nutrition support</h3>
+          <p data-i18n="why3-p">Coaching that goes beyond the session, so results hold outside the studio too.</p>
+        </div>
+        <div class="why-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+          <h3 data-i18n="why4-h3">1-on-1 coaching</h3>
+          <p data-i18n="why4-p">A trainer runs every session with you — never a room of machines you're left to figure out.</p>
+        </div>
+        <div class="why-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.35-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.65-9.5 9-9.5 9z"/></svg>
+          <h3 data-i18n="why5-h3">Pain relief</h3>
+          <p data-i18n="why5-p">Targeted sessions to ease chronic muscle and joint pain, not just build fitness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="divider wrap" viewBox="0 0 1120 34" preserveAspectRatio="none">
+    <path d="M0,17 L400,17 L420,17 L430,4 L442,30 L452,17 L470,17 L720,17 L735,17 L745,4 L757,30 L767,17 L1120,17"
+          stroke="#1d3f3c" stroke-width="1" fill="none"/>
+  </svg>
+
+  <!-- LOCATIONS -->
+  <section class="section" id="locations">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow" data-i18n="loc-eyebrow">STUDIOS</div>
+        <h2 data-i18n="loc-h2">Two studios, both easy to get to.</h2>
+      </div>
+      <div class="loc-grid">
+        <div class="loc-card">
+          <div class="tag mono" data-i18n="loc1-tag">STUDIO 01</div>
+          <h3 data-i18n="loc1-h3">Nasr City</h3>
+          <div class="addr" data-i18n="loc-addr">Cairo, Egypt — message us on WhatsApp for the exact address and directions.</div>
+          <a class="go" href="#offer" data-i18n="loc-cta">Book a session here →</a>
+        </div>
+        <div class="loc-card">
+          <div class="tag mono" data-i18n="loc2-tag">STUDIO 02</div>
+          <h3 data-i18n="loc2-h3">Heliopolis</h3>
+          <div class="addr" data-i18n="loc-addr">Cairo, Egypt — message us on WhatsApp for the exact address and directions.</div>
+          <a class="go" href="#offer" data-i18n="loc-cta">Book a session here →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER + FORM -->
+  <section class="section" id="offer">
+    <div class="wrap">
+      <div class="offer">
+        <div class="offer-copy">
+          <div class="eyebrow" data-i18n="offer-eyebrow">LIMITED TRIAL SPOTS / WEEK</div>
+          <h2 data-i18n="offer-h2">Your first session is on us.</h2>
+          <p data-i18n="offer-p">Come feel what 90% muscle activation actually feels like — no card, no commitment, no gym clothes to bring.</p>
+          <ul class="offer-list">
+            <li data-i18n="offer-li1">One full 20-minute EMS session, free</li>
+            <li data-i18n="offer-li2">Trainer-guided, suit included</li>
+            <li data-i18n="offer-li3">Choose Nasr City or Heliopolis</li>
+            <li data-i18n="offer-li4">No obligation to continue</li>
+          </ul>
+        </div>
+        <form class="offer-form" id="trial-form">
+          <div class="field">
+            <label for="name" data-i18n="form-name-label">Name</label>
+            <input id="name" name="name" type="text" data-i18n-ph="form-name-ph" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="phone" data-i18n="form-phone-label">Phone number</label>
+            <input id="phone" name="phone" type="tel" data-i18n-ph="form-phone-ph" placeholder="e.g. 010 1234 5678" required>
+          </div>
+          <div class="field">
+            <label for="location" data-i18n="form-loc-label">Preferred studio</label>
+            <select id="location" name="location">
+              <option value="Nasr City" data-i18n="form-opt1">Nasr City</option>
+              <option value="Heliopolis" data-i18n="form-opt2">Heliopolis</option>
+              <option value="Not sure" data-i18n="form-opt3">Not sure yet</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-volt" data-i18n="form-submit">Send &amp; claim my free session</button>
+          <div class="form-note" data-i18n="form-note">Sends straight to our WhatsApp — we'll confirm your time within the day.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="logo">
+        <svg class="bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+        SLIM FIT <span>EMS</span>
+      </div>
+      <div data-i18n="foot-tagline">20-minute full body EMS training · Nasr City &amp; Heliopolis</div>
+    </div>
+    <div>
+      <div data-i18n="foot-cta-lead">Prefer to talk first?</div>
+      <a id="wa-footer" href="#" target="_blank" rel="noopener" style="color:var(--voltage);" data-i18n="foot-cta">Message us on WhatsApp →</a>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" id="wa-float" href="#" target="_blank" rel="noopener" aria-label="Message us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+</a>
+
+<script>
+  const WA_NUMBER = "201030033581"; // Egypt country code + number, no leading 0
+
+  const translations = {
+    "nav-how":{en:"How it works",ar:"طريقة التمرين"},
+    "nav-why":{en:"Why EMS",ar:"ليه EMS"},
+    "nav-locations":{en:"Locations",ar:"الفروع"},
+    "nav-offer":{en:"Free trial",ar:"جلسة مجانية"},
+    "nav-wa":{en:"WhatsApp us",ar:"واتساب"},
+    "hero-eyebrow":{en:"NASR CITY &amp; HELIOPOLIS, CAIRO",ar:"مدينة نصر ومصر الجديدة، القاهرة"},
+    "hero-tagline":{en:"Fitness · Nutrition · Pain Relief",ar:"لياقة · تغذية · علاج الألم"},
+    "hero-h1":{en:"One 20-minute session.<br>Every muscle fires <em>at once.</em>",ar:"جلسة واحدة، 20 دقيقة.<br>كل عضلاتك تشتغل <em>في نفس اللحظة.</em>"},
+    "hero-lead":{en:"Slim Fit EMS straps you into a suit that sends your muscles the same signal your brain does — to more fibers, all at once. 20 minutes in, and you've trained like you were at the gym for 90.",ar:"Slim Fit EMS بتلبسك بدلة بتبعت لعضلاتك نفس الإشارة اللي مخك بيبعتها — لعدد أكبر من الألياف في نفس الوقت. 20 دقيقة تمرين تحسها زي إنك اتمرنت 90 دقيقة في الجيم."},
+    "hero-cta1":{en:"Book free trial on WhatsApp",ar:"احجز جلستك المجانية على واتساب"},
+    "hero-cta2":{en:"Fill the form instead",ar:"أو املا الفورم"},
+    "hero-note":{en:"NO SUIT TO BUY · NO GYM CLOTHES NEEDED",ar:"مفيش بدلة تشتريها · مفيش لبس رياضي مطلوب"},
+    "pulse-label1":{en:"MUSCLE SIGNAL",ar:"إشارة العضلة"},
+    "pulse-label2":{en:"● LIVE READOUT",ar:"● قراءة مباشرة"},
+    "stat1-unit":{en:"min",ar:"دقيقة"},
+    "stat1-label":{en:"Per session",ar:"لكل جلسة"},
+    "stat2-label":{en:"Muscle fibers engaged",ar:"من ألياف العضلات تشتغل"},
+    "stat3-label":{en:"Contractions / session",ar:"انقباضة لكل جلسة"},
+    "stat4-label":{en:"Cairo locations",ar:"فروع في القاهرة"},
+    "how-eyebrow":{en:"THE SESSION",ar:"الجلسة"},
+    "how-h2":{en:"Three steps, twenty minutes, no equipment to figure out.",ar:"3 خطوات، 20 دقيقة، من غير ما تفكر في أي معدات."},
+    "how-p":{en:"This is a real sequence — you move through it in order, every visit.",ar:"دي خطوات فعلية، بتتكرر بنفس الترتيب في كل زيارة."},
+    "step1-index":{en:"01 / SUIT UP",ar:"01 / البدلة"},
+    "step1-h3":{en:"Your trainer fits the suit",ar:"المدرب بيلبسك البدلة"},
+    "step1-p":{en:"No gym clothes needed — a sterilized EMS suit goes on in under five minutes, positioned to your body.",ar:"مفيش داعي لبس رياضي — بدلة EMS معقّمة بتتلبس في أقل من 5 دقايق ومظبوطة على جسمك."},
+    "step2-index":{en:"02 / TRAIN",ar:"02 / التمرين"},
+    "step2-h3":{en:"20 minutes, low-impact movement",ar:"20 دقيقة حركة خفيفة على المفاصل"},
+    "step2-p":{en:"Simple guided exercises while impulses do the deep work — easy on joints and tendons, hard on muscle fibers.",ar:"تمارين بسيطة بتوجيه المدرب، والنبضات بتعمل الشغل العميق — خفيفة على المفاصل والأوتار وقوية على ألياف العضلات."},
+    "step3-index":{en:"03 / RECOVER &amp; REPEAT",ar:"03 / الراحة والتكرار"},
+    "step3-h3":{en:"Most clients train twice a week",ar:"أغلب العملاء بيتمرنوا مرتين في الأسبوع"},
+    "step3-p":{en:"Paired with nutrition guidance, that's usually enough to see real change inside a month.",ar:"مع إرشادات التغذية، ده غالبًا كافي إنك تشوف فرق حقيقي خلال شهر."},
+    "why-eyebrow":{en:"WHY EMS",ar:"ليه EMS"},
+    "why-h2":{en:"Built for people who don't have two hours a day to give the gym.",ar:"لِلي مالوش وقت يقعد ساعتين في الجيم كل يوم."},
+    "why1-h3":{en:"Build muscle, burn fat",ar:"بناء عضلات وحرق دهون"},
+    "why1-p":{en:"Deep, simultaneous contractions across major muscle groups in a fraction of the time.",ar:"انقباضات عميقة ومتزامنة في أهم مجموعات العضلات في وقت أقل بكتير."},
+    "why2-h3":{en:"Low-impact on joints",ar:"خفيف على المفاصل"},
+    "why2-p":{en:"No heavy weights or high-impact strain — suited to every age and fitness level.",ar:"من غير أوزان تقيلة أو إجهاد عالي — مناسب لكل الأعمار ومستويات اللياقة."},
+    "why3-h3":{en:"Nutrition support",ar:"دعم غذائي"},
+    "why3-p":{en:"Coaching that goes beyond the session, so results hold outside the studio too.",ar:"متابعة بتكمل بعد الجلسة، عشان النتيجة تفضل ثابتة برا الاستوديو كمان."},
+    "why4-h3":{en:"1-on-1 coaching",ar:"تدريب فردي"},
+    "why4-p":{en:"A trainer runs every session with you — never a room of machines you're left to figure out.",ar:"مدرب معاك في كل جلسة — مش قاعد لوحدك قدام أجهزة."},
+    "why5-h3":{en:"Pain relief",ar:"علاج الألم"},
+    "why5-p":{en:"Targeted sessions to ease chronic muscle and joint pain, not just build fitness.",ar:"جلسات مخصصة لتخفيف آلام العضلات والمفاصل المزمنة، مش بس بناء اللياقة."},
+    "loc-eyebrow":{en:"STUDIOS",ar:"الفروع"},
+    "loc-h2":{en:"Two studios, both easy to get to.",ar:"فرعين، سهل توصلهم بسرعة."},
+    "loc1-tag":{en:"STUDIO 01",ar:"فرع 01"},
+    "loc1-h3":{en:"Nasr City",ar:"مدينة نصر"},
+    "loc2-tag":{en:"STUDIO 02",ar:"فرع 02"},
+    "loc2-h3":{en:"Heliopolis",ar:"مصر الجديدة"},
+    "loc-addr":{en:"Cairo, Egypt — message us on WhatsApp for the exact address and directions.",ar:"القاهرة، مصر — راسلنا على واتساب للعنوان بالتفصيل واتجاهات الوصول."},
+    "loc-cta":{en:"Book a session here →",ar:"احجز جلستك هنا ←"},
+    "offer-eyebrow":{en:"LIMITED TRIAL SPOTS / WEEK",ar:"أماكن محدودة للتجربة أسبوعيًا"},
+    "offer-h2":{en:"Your first session is on us.",ar:"أول جلسة على حسابنا."},
+    "offer-p":{en:"Come feel what 90% muscle activation actually feels like — no card, no commitment, no gym clothes to bring.",ar:"تعالى جرّب إحساس تنشيط 90% من عضلاتك — من غير كارت، من غير التزام، من غير لبس رياضي."},
+    "offer-li1":{en:"One full 20-minute EMS session, free",ar:"جلسة EMS كاملة 20 دقيقة، مجانًا"},
+    "offer-li2":{en:"Trainer-guided, suit included",ar:"بإشراف مدرب، والبدلة متوفرة"},
+    "offer-li3":{en:"Choose Nasr City or Heliopolis",ar:"اختار مدينة نصر أو مصر الجديدة"},
+    "offer-li4":{en:"No obligation to continue",ar:"من غير أي التزام تكمل بعدها"},
+    "form-name-label":{en:"Name",ar:"الاسم"},
+    "form-name-ph":{en:"Your name",ar:"اكتب اسمك"},
+    "form-phone-label":{en:"Phone number",ar:"رقم الموبايل"},
+    "form-phone-ph":{en:"e.g. 010 1234 5678",ar:"مثال: 010 1234 5678"},
+    "form-loc-label":{en:"Preferred studio",ar:"الفرع اللي يناسبك"},
+    "form-opt1":{en:"Nasr City",ar:"مدينة نصر"},
+    "form-opt2":{en:"Heliopolis",ar:"مصر الجديدة"},
+    "form-opt3":{en:"Not sure yet",ar:"لسه مش متأكد"},
+    "form-submit":{en:"Send &amp; claim my free session",ar:"ابعت واحجز جلستي المجانية"},
+    "form-note":{en:"Sends straight to our WhatsApp — we'll confirm your time within the day.",ar:"بيتبعت على طول على واتساب، وهنأكد ميعادك في نفس اليوم."},
+    "foot-tagline":{en:"20-minute full body EMS training · Nasr City &amp; Heliopolis",ar:"تمرين EMS كامل الجسم في 20 دقيقة · مدينة نصر ومصر الجديدة"},
+    "foot-cta-lead":{en:"Prefer to talk first?",ar:"عايز تتكلم معانا الأول؟"},
+    "foot-cta":{en:"Message us on WhatsApp →",ar:"راسلنا على واتساب ←"}
+  };
+
+  const waMessages = {
+    en:"Hi Slim Fit EMS! I'd like to book my free trial session.",
+    ar:"أهلاً Slim Fit EMS! عايز/عايزة أحجز جلستي التجريبية المجانية."
+  };
+
+  (function buildDotwave(){
+    const svg = document.getElementById('dotwave-svg');
+    if(!svg) return;
+    const ns = "http://www.w3.org/2000/svg";
+    const cols = 26, rows = 14, spacing = 20;
+    for(let r = 0; r < rows; r++){
+      for(let c = 0; c < cols; c++){
+        const x = c * spacing;
+        const waveY = Math.sin((c * 0.35) + (r * 0.2)) * 18;
+        const y = r * spacing + waveY;
+        const distFromCorner = Math.hypot(cols - c, rows - r);
+        const opacity = Math.max(0, 1 - distFromCorner / 28);
+        if(opacity <= 0.03) continue;
+        const dot = document.createElementNS(ns, "circle");
+        dot.setAttribute("cx", x);
+        dot.setAttribute("cy", y);
+        dot.setAttribute("r", 2.2);
+        dot.setAttribute("fill", "#2fe8d4");
+        dot.setAttribute("opacity", opacity.toFixed(2));
+        svg.appendChild(dot);
+      }
+    }
+  })();
+
+  let currentLang = 'en';
+
+  function waLink(message){
+    return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(message);
+  }
+
+  function refreshWaLinks(){
+    const msg = waMessages[currentLang];
+    document.getElementById('wa-header').href = waLink(msg);
+    document.getElementById('wa-hero').href = waLink(msg);
+    document.getElementById('wa-footer').href = waLink(msg);
+    document.getElementById('wa-float').href = waLink(msg);
+  }
+
+  function setLanguage(lang){
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      const key = el.getAttribute('data-i18n');
+      if(translations[key]) el.innerHTML = translations[key][lang];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+      const key = el.getAttribute('data-i18n-ph');
+      if(translations[key]) el.placeholder = translations[key][lang];
+    });
+    document.getElementById('lang-toggle').textContent = (lang === 'ar') ? 'English' : 'العربية';
+    refreshWaLinks();
+  }
+
+  document.getElementById('lang-toggle').addEventListener('click', function(){
+    setLanguage(currentLang === 'en' ? 'ar' : 'en');
+  });
+
+  refreshWaLinks();
+
+  document.getElementById('trial-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const locationSelect = document.getElementById('location');
+    const location = locationSelect.options[locationSelect.selectedIndex].text;
+    const msg = (currentLang === 'ar')
+      ? `أهلاً Slim Fit EMS! عايز أحجز جلسة تجريبية مجانية.\nالاسم: ${name}\nالموبايل: ${phone}\nالفرع: ${location}`
+      : `Hi Slim Fit EMS! I'd like to book a free trial session.\nName: ${name}\nPhone: ${phone}\nPreferred studio: ${location}`;
+    window.open(waLink(msg), '_blank');
+  });
+</script>
+
+</body>
+</html>
