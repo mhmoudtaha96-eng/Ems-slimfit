@@ -1200,6 +1200,8 @@
     });
     document.getElementById('lang-toggle').textContent = (lang === 'ar') ? 'English' : 'العربية';
     refreshWaLinks();
+    renderPricing(lang);
+    renderFAQ(lang);
   }
 
   document.getElementById('lang-toggle').addEventListener('click', function(){
@@ -1207,6 +1209,8 @@
   });
 
   refreshWaLinks();
+  renderPricing(currentLang);
+  renderFAQ(currentLang);
 
   document.getElementById('trial-form').addEventListener('submit', function(e){
     e.preventDefault();
