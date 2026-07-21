@@ -94,6 +94,7 @@
     border-bottom:1px solid var(--line);
   }
   .nav{
+    position:relative;
     display:flex;align-items:center;justify-content:space-between;gap:16px;
     padding:16px 24px;max-width:1120px;margin:0 auto;
   }
@@ -101,17 +102,19 @@
     font-family:'Space Grotesk',sans-serif;
     font-weight:700;font-size:19px;
     display:flex;align-items:center;gap:8px;
+    flex:none;
   }
   .logo span{color:var(--voltage);}
   .logo .bolt{width:16px;height:16px;color:var(--voltage);flex:none;}
   .nav-right{display:flex;align-items:center;gap:14px;}
-  .nav-links{display:flex;gap:20px;font-size:13.5px;color:var(--muted);}
+  .nav-links{display:flex;gap:18px;font-size:13.5px;color:var(--muted);flex-wrap:wrap;}
   .nav-links a:hover{color:var(--bone);}
   .lang-toggle{
     font-family:'IBM Plex Mono',monospace;
     font-size:12px;letter-spacing:0.06em;
     border:1px solid var(--line);border-radius:999px;
     padding:8px 14px;cursor:pointer;background:transparent;color:var(--bone);
+    flex:none;
   }
   .lang-toggle:hover{border-color:var(--voltage);color:var(--voltage);}
   .btn{
@@ -131,9 +134,53 @@
     background:transparent;
   }
   .btn-ghost:hover{border-color:var(--voltage);color:var(--voltage);}
-  .btn-sm{padding:9px 16px;font-size:13px;}
+  .btn-sm{padding:9px 16px;font-size:13px;flex:none;}
 
-  @media (max-width:820px){ .nav-links{display:none;} }
+  /* hamburger — hidden on desktop */
+  .hamburger{
+    display:none;
+    background:none;border:1px solid var(--line);border-radius:9px;
+    width:38px;height:38px;align-items:center;justify-content:center;
+    color:var(--bone);cursor:pointer;flex:none;position:relative;
+  }
+  .hamburger svg{width:20px;height:20px;position:absolute;transition:opacity .15s ease;}
+  .hamburger .icon-close{opacity:0;}
+  .hamburger[aria-expanded="true"] .icon-menu{opacity:0;}
+  .hamburger[aria-expanded="true"] .icon-close{opacity:1;}
+  .hamburger:hover{border-color:var(--voltage);color:var(--voltage);}
+
+  @media (max-width:820px){
+    .nav-right{gap:10px;}
+    .hamburger{display:flex;}
+    .nav-links{
+      display:flex;
+      position:absolute;
+      top:100%;left:0;right:0;
+      flex-direction:column;
+      align-items:stretch;
+      gap:0;
+      background:var(--surface);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 16px 30px rgba(0,0,0,0.35);
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .25s ease;
+    }
+    .nav-links.open{ max-height:520px; }
+    .nav-links a{
+      padding:14px 24px;
+      border-top:1px solid var(--line);
+      color:var(--bone);
+      font-size:15px;
+    }
+    .nav-links a:first-child{border-top:none;}
+  }
+
+  @media (max-width:480px){
+    .nav-right{gap:8px;}
+    #wa-header{padding:9px 12px;font-size:12.5px;}
+    .lang-toggle{padding:8px 10px;font-size:11px;}
+  }
 
   /* ---------- hero ---------- */
   .hero{
@@ -473,7 +520,7 @@
       SLIM FIT <span>EMS</span>
     </a>
     <div class="nav-right">
-      <nav class="nav-links">
+      <nav class="nav-links" id="nav-links">
         <a href="#how" data-i18n="nav-how">How it works</a>
         <a href="#why" data-i18n="nav-why">Why EMS</a>
         <a href="#about" data-i18n="nav-about">Find Us</a>
@@ -485,6 +532,10 @@
       </nav>
       <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">العربية</button>
       <a class="btn btn-volt btn-sm" id="wa-header" href="#" target="_blank" rel="noopener" data-i18n="nav-wa">WhatsApp us</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
     </div>
   </div>
 </header>
@@ -1147,6 +1198,31 @@
     e.preventDefault();
     window.scrollTo({top:0, behavior:'smooth'});
   });
+
+  (function mobileMenu(){
+    const btn = document.getElementById('hamburger');
+    const links = document.getElementById('nav-links');
+    if(!btn || !links) return;
+
+    function closeMenu(){
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    }
+    function toggleMenu(){
+      const isOpen = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    btn.addEventListener('click', toggleMenu);
+
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', closeMenu);
+    });
+
+    window.addEventListener('resize', function(){
+      if(window.innerWidth > 820) closeMenu();
+    });
+  })();
 
   (function buildDotwave(){
     const svg = document.getElementById('dotwave-svg');
