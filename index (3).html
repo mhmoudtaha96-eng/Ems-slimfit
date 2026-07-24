@@ -877,7 +877,9 @@
         <form class="offer-form" id="trial-form">
           <div class="field">
             <label for="name" data-i18n="form-name-label">Name</label>
-            <input id="name" name="name" type="text" data-i18n-ph="form-name-ph" placeholder="Your name" required>
+            <input id="name" name="name" type="text" data-i18n-ph="form-name-ph" placeholder="Your name"
+                   pattern="[a-zA-Z\u0600-\u06FF\s]+" title="Letters and spaces only" required>
+            <div class="field-error" id="name-error" data-i18n="form-name-error">Letters and spaces only, no numbers or symbols.</div>
           </div>
           <div class="field">
             <label for="phone" data-i18n="form-phone-label">Phone number</label>
@@ -1010,6 +1012,7 @@
     "offer-li4":{en:"No obligation to continue",ar:"من غير أي التزام تكمل بعدها"},
     "form-name-label":{en:"Name",ar:"الاسم"},
     "form-name-ph":{en:"Your name",ar:"اكتب اسمك"},
+    "form-name-error":{en:"Letters and spaces only, no numbers or symbols.",ar:"حروف ومسافات فقط، من غير أرقام أو رموز."},
     "form-phone-label":{en:"Phone number",ar:"رقم الموبايل"},
     "form-phone-ph":{en:"e.g. 01012345678",ar:"مثال: 01012345678"},
     "form-phone-error":{en:"Please enter exactly 11 digits.",ar:"من فضلك ادخل 11 رقم بالظبط."},
@@ -1381,6 +1384,27 @@
     return /^\d{11}$/.test(value.trim());
   }
 
+  // Letters (English + Arabic) and spaces only — no digits, no symbols
+  const NAME_ALLOWED_CHARS = /[^a-zA-Z\u0600-\u06FF\s]/g;
+  function isValidName(value){
+    const trimmed = value.trim();
+    return trimmed.length > 0 && /^[a-zA-Z\u0600-\u06FF\s]+$/.test(trimmed);
+  }
+
+  const nameInput = document.getElementById('name');
+  nameInput.addEventListener('input', function(){
+    // strip anything that isn't a letter (EN/AR) or space as the user types
+    this.value = this.value.replace(NAME_ALLOWED_CHARS, '');
+    if(this.value.length > 0){
+      this.classList.toggle('invalid', !isValidName(this.value));
+    } else {
+      this.classList.remove('invalid');
+    }
+  });
+  nameInput.addEventListener('blur', function(){
+    if(this.value.length > 0) this.classList.toggle('invalid', !isValidName(this.value));
+  });
+
   const phoneInput = document.getElementById('phone');
   phoneInput.addEventListener('input', function(){
     // strip anything that isn't a digit as the user types
@@ -1399,6 +1423,12 @@
     e.preventDefault();
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
+
+    if(!isValidName(name)){
+      nameInput.classList.add('invalid');
+      nameInput.focus();
+      return;
+    }
 
     if(!isValidPhone(phone)){
       phoneInput.classList.add('invalid');
