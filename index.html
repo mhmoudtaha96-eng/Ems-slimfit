@@ -878,7 +878,7 @@
           <div class="field">
             <label for="name" data-i18n="form-name-label">Name</label>
             <input id="name" name="name" type="text" data-i18n-ph="form-name-ph" placeholder="Your name"
-                   pattern="[a-zA-Z\u0600-\u06FF\s]+" title="Letters and spaces only" required>
+                   pattern="[a-zA-Z\u0600-\u065F\u066E-\u06EF\u06FA-\u06FF\s]+" title="Letters and spaces only" required>
             <div class="field-error" id="name-error" data-i18n="form-name-error">Letters and spaces only, no numbers or symbols.</div>
           </div>
           <div class="field">
@@ -1384,11 +1384,12 @@
     return /^\d{11}$/.test(value.trim());
   }
 
-  // Letters (English + Arabic) and spaces only — no digits, no symbols
-  const NAME_ALLOWED_CHARS = /[^a-zA-Z\u0600-\u06FF\s]/g;
+  // Letters (English + Arabic) and spaces only — excludes Arabic-Indic (٠-٩) and
+  // Extended Arabic-Indic (۰-۹) digit ranges, which otherwise sit inside \u0600-\u06FF.
+  const NAME_ALLOWED_CHARS = /[^a-zA-Z\u0600-\u065F\u066E-\u06EF\u06FA-\u06FF\s]/g;
   function isValidName(value){
     const trimmed = value.trim();
-    return trimmed.length > 0 && /^[a-zA-Z\u0600-\u06FF\s]+$/.test(trimmed);
+    return trimmed.length > 0 && /^[a-zA-Z\u0600-\u065F\u066E-\u06EF\u06FA-\u06FF\s]+$/.test(trimmed);
   }
 
   const nameInput = document.getElementById('name');
