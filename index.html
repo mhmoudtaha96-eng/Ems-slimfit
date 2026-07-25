@@ -5,6 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Slim Fit EMS Fitness Club — 20-Minute Full Body Training in Cairo</title>
 <meta name="description" content="Slim Fit EMS — 20-minute full body EMS training in Nasr City & Heliopolis. Book your free trial on WhatsApp today.">
+
+<!-- Favicon / browser tab icon -->
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="images/android-chrome-512.png">
+<meta name="theme-color" content="#081c1b">
+
+<!-- Open Graph (WhatsApp, Facebook, iMessage link previews) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Slim Fit EMS">
+<meta property="og:title" content="Slim Fit EMS — 20-Minute Full Body Training in Cairo">
+<meta property="og:description" content="20-minute full body EMS training in Nasr City & Heliopolis. Book your free trial on WhatsApp today.">
+<meta property="og:image" content="https://ems-slimfit.mhmoudtaha96.workers.dev/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://ems-slimfit.mhmoudtaha96.workers.dev/">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Slim Fit EMS — 20-Minute Full Body Training in Cairo">
+<meta name="twitter:description" content="20-minute full body EMS training in Nasr City & Heliopolis. Book your free trial on WhatsApp today.">
+<meta name="twitter:image" content="https://ems-slimfit.mhmoudtaha96.workers.dev/images/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -292,6 +319,21 @@
   .step h3{font-size:19px;margin:14px 0 10px;}
   .step p{font-size:14px;}
   @media (max-width:760px){ .steps{grid-template-columns:1fr;} }
+
+  /* ---------- why stats ---------- */
+  .why-stats{ display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:8px 0 32px; }
+  .why-stat{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 16px;text-align:center;
+  }
+  .why-stat-num{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:clamp(22px,2.6vw,30px);color:var(--voltage);
+  }
+  html[dir="rtl"] .why-stat-num{ font-family:'Tajawal',sans-serif; }
+  .why-stat-label{ font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5; }
+  @media (max-width:760px){ .why-stats{grid-template-columns:repeat(2,1fr);} }
+  .why-disclaimer{ font-size:12px;color:var(--muted);margin-top:24px;max-width:72ch;font-style:italic; }
 
   /* ---------- why grid ---------- */
   .why-grid{ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px; }
@@ -674,22 +716,43 @@
       <div class="section-head">
         <div class="eyebrow" data-i18n="why-eyebrow">WHY EMS</div>
         <h2 data-i18n="why-h2">Built for people who don't have two hours a day to give the gym.</h2>
+        <p data-i18n="why-p">Backed by clinical research, not just marketing talk.</p>
       </div>
+
+      <div class="why-stats">
+        <div class="why-stat">
+          <div class="why-stat-num">90%</div>
+          <div class="why-stat-label" data-i18n="why-stat1-label">Muscle fibers activated per session, vs roughly 30–40% in regular training</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-num">20→90</div>
+          <div class="why-stat-label" data-i18n="why-stat2-label">Minutes: a 20-minute EMS session can match the stimulus of up to 90 minutes at a regular gym</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-num">48h</div>
+          <div class="why-stat-label" data-i18n="why-stat3-label">Hours your body keeps burning extra calories after a session (the afterburn effect)</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-num">8 wks</div>
+          <div class="why-stat-label" data-i18n="why-stat4-label">Average time clinical studies report visible strength and body-composition change</div>
+        </div>
+      </div>
+
       <div class="why-grid">
         <div class="why-card">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
           <h3 data-i18n="why1-h3">Build muscle, burn fat</h3>
-          <p data-i18n="why1-p">Deep, simultaneous contractions across major muscle groups in a fraction of the time.</p>
+          <p data-i18n="why1-p">EMS activates up to 90% of your muscle fibers at once, versus roughly 30–40% in regular training — driving faster strength gains and fat loss in the same 20 minutes.</p>
         </div>
         <div class="why-card">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
           <h3 data-i18n="why2-h3">Low-impact on joints</h3>
-          <p data-i18n="why2-p">No heavy weights or high-impact strain — suited to every age and fitness level.</p>
+          <p data-i18n="why2-p">No heavy weights or high-impact strain — suited to every age and fitness level, including recovering or older clients.</p>
         </div>
         <div class="why-card">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c-4 4-6 7-6 10a6 6 0 0 0 12 0c0-3-2-6-6-10z"/></svg>
           <h3 data-i18n="why3-h3">Nutrition support</h3>
-          <p data-i18n="why3-p">Coaching that goes beyond the session, so results hold outside the gym too.</p>
+          <p data-i18n="why3-p">Coaching that goes beyond the session, so your fat-loss and muscle gains keep compounding outside the gym too.</p>
         </div>
         <div class="why-card">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
@@ -701,7 +764,13 @@
           <h3 data-i18n="why5-h3">Pain relief</h3>
           <p data-i18n="why5-p">Targeted sessions to ease chronic muscle and joint pain, not just build fitness.</p>
         </div>
+        <div class="why-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v6h-6"/></svg>
+          <h3 data-i18n="why6-h3">Backed by research</h3>
+          <p data-i18n="why6-p">Clinical studies report measurable drops in body fat percentage and waist circumference, plus significant gains in muscle mass and strength within 8 weeks of consistent EMS training.</p>
+        </div>
       </div>
+      <p class="why-disclaimer" data-i18n="why-disclaimer">Individual results vary with training consistency, nutrition, and starting fitness level — ask your trainer what's realistic for you.</p>
     </div>
   </section>
 
@@ -877,7 +946,9 @@
         <form class="offer-form" id="trial-form">
           <div class="field">
             <label for="name" data-i18n="form-name-label">Name</label>
-            <input id="name" name="name" type="text" data-i18n-ph="form-name-ph" placeholder="Your name" required>
+            <input id="name" name="name" type="text" data-i18n-ph="form-name-ph" placeholder="Your name"
+                   pattern="[a-zA-Z\u0600-\u065F\u066E-\u06EF\u06FA-\u06FF\s]+" title="Letters and spaces only" required>
+            <div class="field-error" id="name-error" data-i18n="form-name-error">Letters and spaces only, no numbers or symbols.</div>
           </div>
           <div class="field">
             <label for="phone" data-i18n="form-phone-label">Phone number</label>
@@ -982,16 +1053,24 @@
     "step3-p":{en:"Paired with nutrition guidance, that's usually enough to see real change inside a month.",ar:"مع إرشادات التغذية، ده غالبًا كافي إنك تشوف فرق حقيقي خلال شهر."},
     "why-eyebrow":{en:"WHY EMS",ar:"ليه EMS"},
     "why-h2":{en:"Built for people who don't have two hours a day to give the gym.",ar:"لِلي مالوش وقت يقعد ساعتين في الجيم كل يوم."},
+    "why-p":{en:"Backed by clinical research, not just marketing talk.",ar:"مبني على أبحاث علمية، مش مجرد كلام تسويقي."},
+    "why-stat1-label":{en:"Muscle fibers activated per session, vs roughly 30–40% in regular training",ar:"من ألياف عضلاتك بتشتغل في الجلسة الواحدة، مقابل 30–40% تقريبًا في التمرين العادي"},
+    "why-stat2-label":{en:"Minutes: a 20-minute EMS session can match the stimulus of up to 90 minutes at a regular gym",ar:"دقيقة: جلسة EMS 20 دقيقة ممكن توازي مجهود يوصل لـ90 دقيقة في الجيم العادي"},
+    "why-stat3-label":{en:"Hours your body keeps burning extra calories after a session (the afterburn effect)",ar:"ساعة جسمك بيفضل بيحرق سعرات زيادة بعد الجلسة (تأثير ما بعد التمرين)"},
+    "why-stat4-label":{en:"Average time clinical studies report visible strength and body-composition change",ar:"متوسط المدة اللي الدراسات العلمية بتوثق فيها تغيّر واضح في القوة وتكوين الجسم"},
     "why1-h3":{en:"Build muscle, burn fat",ar:"بناء عضلات وحرق دهون"},
-    "why1-p":{en:"Deep, simultaneous contractions across major muscle groups in a fraction of the time.",ar:"انقباضات عميقة ومتزامنة في أهم مجموعات العضلات في وقت أقل بكتير."},
+    "why1-p":{en:"EMS activates up to 90% of your muscle fibers at once, versus roughly 30–40% in regular training — driving faster strength gains and fat loss in the same 20 minutes.",ar:"EMS بينشط لحد 90% من ألياف عضلاتك في نفس اللحظة، مقابل 30–40% تقريبًا في التمرين العادي — يعني نتيجة أسرع في بناء العضل وحرق الدهون في نفس الـ20 دقيقة."},
     "why2-h3":{en:"Low-impact on joints",ar:"خفيف على المفاصل"},
-    "why2-p":{en:"No heavy weights or high-impact strain — suited to every age and fitness level.",ar:"من غير أوزان تقيلة أو إجهاد عالي — مناسب لكل الأعمار ومستويات اللياقة."},
+    "why2-p":{en:"No heavy weights or high-impact strain — suited to every age and fitness level, including recovering or older clients.",ar:"من غير أوزان تقيلة أو إجهاد عالي — مناسب لكل الأعمار ومستويات اللياقة، حتى المتعافيين أو كبار السن."},
     "why3-h3":{en:"Nutrition support",ar:"دعم غذائي"},
-    "why3-p":{en:"Coaching that goes beyond the session, so results hold outside the gym too.",ar:"متابعة بتكمل بعد الجلسة، عشان النتيجة تفضل ثابتة برا الاستوديو كمان."},
+    "why3-p":{en:"Coaching that goes beyond the session, so your fat-loss and muscle gains keep compounding outside the gym too.",ar:"متابعة بتكمل بعد الجلسة، عشان حرق الدهون وبناء العضل يفضلوا مستمرين حتى برا الاستوديو."},
     "why4-h3":{en:"1-on-1 coaching",ar:"تدريب فردي"},
     "why4-p":{en:"A trainer runs every session with you — never a room of machines you're left to figure out.",ar:"مدرب معاك في كل جلسة — مش قاعد لوحدك قدام أجهزة."},
     "why5-h3":{en:"Pain relief",ar:"علاج الألم"},
     "why5-p":{en:"Targeted sessions to ease chronic muscle and joint pain, not just build fitness.",ar:"جلسات مخصصة لتخفيف آلام العضلات والمفاصل المزمنة، مش بس بناء اللياقة."},
+    "why6-h3":{en:"Backed by research",ar:"مدعوم بأبحاث علمية"},
+    "why6-p":{en:"Clinical studies report measurable drops in body fat percentage and waist circumference, plus significant gains in muscle mass and strength within 8 weeks of consistent EMS training.",ar:"دراسات علمية بتوثق انخفاض ملحوظ في نسبة الدهون ومحيط الخصر، وكمان زيادة واضحة في كتلة العضلات والقوة خلال 8 أسابيع من الالتزام بتدريب EMS."},
+    "why-disclaimer":{en:"Individual results vary with training consistency, nutrition, and starting fitness level — ask your trainer what's realistic for you.",ar:"النتائج بتختلف من شخص للتاني حسب الانتظام والتغذية ومستوى اللياقة البدائي — اسأل مدربك عن التوقع الواقعي لحالتك."},
     "loc-eyebrow":{en:"BRANCHES",ar:"الفروع"},
     "loc-h2":{en:"Two branches, both easy to get to.",ar:"فرعين، سهل توصلهم بسرعة."},
     "loc1-tag":{en:"BRANCH 01",ar:"فرع 01"},
@@ -1010,6 +1089,7 @@
     "offer-li4":{en:"No obligation to continue",ar:"من غير أي التزام تكمل بعدها"},
     "form-name-label":{en:"Name",ar:"الاسم"},
     "form-name-ph":{en:"Your name",ar:"اكتب اسمك"},
+    "form-name-error":{en:"Letters and spaces only, no numbers or symbols.",ar:"حروف ومسافات فقط، من غير أرقام أو رموز."},
     "form-phone-label":{en:"Phone number",ar:"رقم الموبايل"},
     "form-phone-ph":{en:"e.g. 01012345678",ar:"مثال: 01012345678"},
     "form-phone-error":{en:"Please enter exactly 11 digits.",ar:"من فضلك ادخل 11 رقم بالظبط."},
@@ -1338,21 +1418,7 @@
     "images/nasr-city-11.jpg"
   ];
 
-  const HELIOPOLIS_PHOTOS = [
-    "images/heliopolis-01.jpg",
-    "images/heliopolis-02.jpg",
-    "images/heliopolis-03.jpg",
-    "images/heliopolis-04.jpg",
-    "images/heliopolis-05.jpg",
-    "images/heliopolis-06.jpg",
-    "images/heliopolis-07.jpg",
-    "images/heliopolis-08.jpg",
-    "images/heliopolis-09.jpg",
-    "images/heliopolis-10.jpg",
-    "images/heliopolis-11.jpg",
-    "images/heliopolis-12.jpg",
-    "images/heliopolis-13.jpg"
-  ];
+  const HELIOPOLIS_PHOTOS = []; // add paths here once you have Heliopolis photos, e.g. "images/heliopolis-01.jpg"
 
   const carouselStatusText = {
     empty:{en:"Photos coming soon.",ar:"الصور قريبًا."}
@@ -1395,6 +1461,28 @@
     return /^\d{11}$/.test(value.trim());
   }
 
+  // Letters (English + Arabic) and spaces only — excludes Arabic-Indic (٠-٩) and
+  // Extended Arabic-Indic (۰-۹) digit ranges, which otherwise sit inside \u0600-\u06FF.
+  const NAME_ALLOWED_CHARS = /[^a-zA-Z\u0600-\u065F\u066E-\u06EF\u06FA-\u06FF\s]/g;
+  function isValidName(value){
+    const trimmed = value.trim();
+    return trimmed.length > 0 && /^[a-zA-Z\u0600-\u065F\u066E-\u06EF\u06FA-\u06FF\s]+$/.test(trimmed);
+  }
+
+  const nameInput = document.getElementById('name');
+  nameInput.addEventListener('input', function(){
+    // strip anything that isn't a letter (EN/AR) or space as the user types
+    this.value = this.value.replace(NAME_ALLOWED_CHARS, '');
+    if(this.value.length > 0){
+      this.classList.toggle('invalid', !isValidName(this.value));
+    } else {
+      this.classList.remove('invalid');
+    }
+  });
+  nameInput.addEventListener('blur', function(){
+    if(this.value.length > 0) this.classList.toggle('invalid', !isValidName(this.value));
+  });
+
   const phoneInput = document.getElementById('phone');
   phoneInput.addEventListener('input', function(){
     // strip anything that isn't a digit as the user types
@@ -1413,6 +1501,12 @@
     e.preventDefault();
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
+
+    if(!isValidName(name)){
+      nameInput.classList.add('invalid');
+      nameInput.focus();
+      return;
+    }
 
     if(!isValidPhone(phone)){
       phoneInput.classList.add('invalid');
