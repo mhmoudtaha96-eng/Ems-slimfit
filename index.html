@@ -5,33 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Slim Fit EMS Fitness Club — 20-Minute Full Body Training in Cairo</title>
 <meta name="description" content="Slim Fit EMS — 20-minute full body EMS training in Nasr City & Heliopolis. Book your free trial on WhatsApp today.">
-
-<!-- Favicon / browser tab icon -->
-<link rel="icon" href="images/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="images/android-chrome-512.png">
-<meta name="theme-color" content="#081c1b">
-
-<!-- Open Graph (WhatsApp, Facebook, iMessage link previews) -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Slim Fit EMS">
-<meta property="og:title" content="Slim Fit EMS — 20-Minute Full Body Training in Cairo">
-<meta property="og:description" content="20-minute full body EMS training in Nasr City & Heliopolis. Book your free trial on WhatsApp today.">
-<meta property="og:image" content="https://ems-slimfit.mhmoudtaha96.workers.dev/images/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://ems-slimfit.mhmoudtaha96.workers.dev/">
-<meta property="og:locale" content="en_US">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Slim Fit EMS — 20-Minute Full Body Training in Cairo">
-<meta name="twitter:description" content="20-minute full body EMS training in Nasr City & Heliopolis. Book your free trial on WhatsApp today.">
-<meta name="twitter:image" content="https://ems-slimfit.mhmoudtaha96.workers.dev/images/og-image.png">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -904,9 +877,7 @@
         <form class="offer-form" id="trial-form">
           <div class="field">
             <label for="name" data-i18n="form-name-label">Name</label>
-            <input id="name" name="name" type="text" data-i18n-ph="form-name-ph" placeholder="Your name"
-                   pattern="[a-zA-Z\u0600-\u065F\u066E-\u06EF\u06FA-\u06FF\s]+" title="Letters and spaces only" required>
-            <div class="field-error" id="name-error" data-i18n="form-name-error">Letters and spaces only, no numbers or symbols.</div>
+            <input id="name" name="name" type="text" data-i18n-ph="form-name-ph" placeholder="Your name" required>
           </div>
           <div class="field">
             <label for="phone" data-i18n="form-phone-label">Phone number</label>
@@ -1039,7 +1010,6 @@
     "offer-li4":{en:"No obligation to continue",ar:"من غير أي التزام تكمل بعدها"},
     "form-name-label":{en:"Name",ar:"الاسم"},
     "form-name-ph":{en:"Your name",ar:"اكتب اسمك"},
-    "form-name-error":{en:"Letters and spaces only, no numbers or symbols.",ar:"حروف ومسافات فقط، من غير أرقام أو رموز."},
     "form-phone-label":{en:"Phone number",ar:"رقم الموبايل"},
     "form-phone-ph":{en:"e.g. 01012345678",ar:"مثال: 01012345678"},
     "form-phone-error":{en:"Please enter exactly 11 digits.",ar:"من فضلك ادخل 11 رقم بالظبط."},
@@ -1368,7 +1338,21 @@
     "images/nasr-city-11.jpg"
   ];
 
-  const HELIOPOLIS_PHOTOS = []; // add paths here once you have Heliopolis photos, e.g. "images/heliopolis-01.jpg"
+  const HELIOPOLIS_PHOTOS = [
+    "images/heliopolis-01.jpg",
+    "images/heliopolis-02.jpg",
+    "images/heliopolis-03.jpg",
+    "images/heliopolis-04.jpg",
+    "images/heliopolis-05.jpg",
+    "images/heliopolis-06.jpg",
+    "images/heliopolis-07.jpg",
+    "images/heliopolis-08.jpg",
+    "images/heliopolis-09.jpg",
+    "images/heliopolis-10.jpg",
+    "images/heliopolis-11.jpg",
+    "images/heliopolis-12.jpg",
+    "images/heliopolis-13.jpg"
+  ];
 
   const carouselStatusText = {
     empty:{en:"Photos coming soon.",ar:"الصور قريبًا."}
@@ -1411,28 +1395,6 @@
     return /^\d{11}$/.test(value.trim());
   }
 
-  // Letters (English + Arabic) and spaces only — excludes Arabic-Indic (٠-٩) and
-  // Extended Arabic-Indic (۰-۹) digit ranges, which otherwise sit inside \u0600-\u06FF.
-  const NAME_ALLOWED_CHARS = /[^a-zA-Z\u0600-\u065F\u066E-\u06EF\u06FA-\u06FF\s]/g;
-  function isValidName(value){
-    const trimmed = value.trim();
-    return trimmed.length > 0 && /^[a-zA-Z\u0600-\u065F\u066E-\u06EF\u06FA-\u06FF\s]+$/.test(trimmed);
-  }
-
-  const nameInput = document.getElementById('name');
-  nameInput.addEventListener('input', function(){
-    // strip anything that isn't a letter (EN/AR) or space as the user types
-    this.value = this.value.replace(NAME_ALLOWED_CHARS, '');
-    if(this.value.length > 0){
-      this.classList.toggle('invalid', !isValidName(this.value));
-    } else {
-      this.classList.remove('invalid');
-    }
-  });
-  nameInput.addEventListener('blur', function(){
-    if(this.value.length > 0) this.classList.toggle('invalid', !isValidName(this.value));
-  });
-
   const phoneInput = document.getElementById('phone');
   phoneInput.addEventListener('input', function(){
     // strip anything that isn't a digit as the user types
@@ -1451,12 +1413,6 @@
     e.preventDefault();
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
-
-    if(!isValidName(name)){
-      nameInput.classList.add('invalid');
-      nameInput.focus();
-      return;
-    }
 
     if(!isValidPhone(phone)){
       phoneInput.classList.add('invalid');
