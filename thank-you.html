@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thanks — Slim Fit EMS</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- =====================================================================
+     TRACKING PIXELS — paste your ad-platform code below.
+     This page only loads AFTER a real form submission, so any "Lead" /
+     "Conversion" event fired here only counts real leads — put your
+     Meta Pixel and Google Ads conversion tags in the two blocks below.
+     ===================================================================== -->
+
+<!-- 1) META (Facebook/Instagram) PIXEL — paste your base code + Lead event here -->
+<!--
+<script>
+!function(f,b,e,v,n,t,s){...}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'YOUR_PIXEL_ID');
+fbq('track', 'Lead');
+</script>
+-->
+
+<!-- 2) GOOGLE ADS CONVERSION TAG — paste your gtag conversion snippet here -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-XXXXXXXXX');
+  gtag('event', 'conversion', {'send_to': 'AW-XXXXXXXXX/YOUR_CONVERSION_LABEL'});
+</script>
+-->
+<!-- ===================================================================== -->
+
+<style>
+  :root{
+    --ink:#081c1b; --surface:#0f2c2a; --bone:#f4f8f7; --muted:#84aaa7;
+    --voltage:#2fe8d4; --line:#1d3f3c; --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; min-height:100vh; background:var(--ink); color:var(--bone);
+    font-family:'Inter',sans-serif; display:flex; align-items:center; justify-content:center;
+    padding:24px; text-align:center;
+  }
+  .card{
+    max-width:520px; background:var(--surface); border:1px solid var(--line);
+    border-radius:20px; padding:48px 36px; position:relative; overflow:hidden;
+  }
+  .check{
+    width:64px; height:64px; border-radius:50%; background:var(--voltage);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 24px;
+  }
+  .check svg{width:30px;height:30px;color:var(--ink);}
+  h1{
+    font-family:'Space Grotesk',sans-serif; font-size:clamp(24px,4vw,32px);
+    margin:0 0 14px; line-height:1.2;
+  }
+  p{ color:var(--muted); font-size:15.5px; line-height:1.6; margin:0 0 28px; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:13px 26px; border-radius:999px; font-weight:600; font-size:14.5px;
+    text-decoration:none; transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-volt{ background:var(--voltage); color:var(--ink); }
+  .btn-volt:hover{ transform:translateY(-2px); box-shadow:0 8px 24px rgba(47,232,212,0.28); }
+  .btn-ghost{
+    border:1px solid var(--line); color:var(--bone); background:transparent; margin-top:12px;
+  }
+  .btn-ghost:hover{ border-color:var(--voltage); color:var(--voltage); }
+  .actions{ display:flex; flex-direction:column; gap:0; }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="check">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <h1>You're all set — thanks!</h1>
+    <p>We've received your details. Our team will contact you within the day to confirm your free trial session.</p>
+    <div class="actions">
+      <a class="btn btn-volt" href="https://wa.me/201030033581" target="_blank" rel="noopener">Message us on WhatsApp now</a>
+      <a class="btn btn-ghost" href="index.html">Back to homepage</a>
+    </div>
+  </div>
+
+</body>
+</html>
