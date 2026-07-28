@@ -943,7 +943,7 @@
             <li data-i18n="offer-li4">No obligation to continue</li>
           </ul>
         </div>
-        <form class="offer-form" id="trial-form">
+        <form class="offer-form" id="trial-form" method="POST" target="hidden_lead_iframe">
           <div class="field">
             <label for="name" data-i18n="form-name-label">Name</label>
             <input id="name" name="name" type="text" data-i18n-ph="form-name-ph" placeholder="Your name"
@@ -965,9 +965,12 @@
               <option value="Not sure" data-i18n="form-opt3">Not sure yet</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-volt" data-i18n="form-submit">Send &amp; claim my free session</button>
-          <div class="form-note" data-i18n="form-note">Sends straight to our WhatsApp — we'll confirm your time within the day.</div>
+          <input type="hidden" name="lang" id="lang-field" value="en">
+          <input type="hidden" name="source" value="website-trial-form">
+          <button type="submit" class="btn btn-volt" id="form-submit-btn" data-i18n="form-submit">Send &amp; claim my free session</button>
+          <div class="form-note" data-i18n="form-note">We'll save your details and contact you within the day to confirm your session.</div>
         </form>
+        <iframe name="hidden_lead_iframe" id="hidden_lead_iframe" style="display:none;" title="form submission target"></iframe>
       </div>
     </div>
   </section>
@@ -1098,7 +1101,7 @@
     "form-opt2":{en:"Heliopolis",ar:"مصر الجديدة"},
     "form-opt3":{en:"Not sure yet",ar:"لسه مش متأكد"},
     "form-submit":{en:"Send &amp; claim my free session",ar:"ابعت واحجز جلستي المجانية"},
-    "form-note":{en:"Sends straight to our WhatsApp — we'll confirm your time within the day.",ar:"بيتبعت على طول على واتساب، وهنأكد ميعادك في نفس اليوم."},
+    "form-note":{en:"We'll save your details and contact you within the day to confirm your session.",ar:"هنسجل بياناتك ونتواصل معاك خلال نفس اليوم لتأكيد ميعادك."},
     "foot-tagline":{en:"20-minute full body EMS training · Nasr City &amp; Heliopolis",ar:"تمرين EMS كامل الجسم في 20 دقيقة · مدينة نصر ومصر الجديدة"},
     "foot-cta-lead":{en:"Prefer to talk first?",ar:"عايز تتكلم معانا الأول؟"},
     "foot-cta":{en:"Message us on WhatsApp →",ar:"راسلنا على واتساب ←"},
@@ -1511,29 +1514,65 @@
     if(this.value.length > 0) this.classList.toggle('invalid', !isValidPhone(this.value));
   });
 
-  document.getElementById('trial-form').addEventListener('submit', function(e){
-    e.preventDefault();
+  /* =========================================================
+     LEAD FORM SUBMISSION
+     Sends leads to a Google Sheet via a Google Apps Script Web App,
+     then redirects to thank-you.html (where you place your Meta
+     Pixel / Google Ads conversion tracking code).
+
+     SETUP REQUIRED: replace LEAD_FORM_ENDPOINT below with your own
+     Apps Script Web App URL. See the setup guide provided alongside
+     this file for the exact steps.
+     ========================================================= */
+  const LEAD_FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbxcVNYSEpNMhBIrUGR-ejMEw-v0hEsuF90tin20hjl_-y52FziVD_vUtmhuKq4gpp8/exec";
+
+  const trialForm = document.getElementById('trial-form');
+  const hiddenLeadIframe = document.getElementById('hidden_lead_iframe');
+  let leadFormSubmitting = false;
+
+  // Only redirect to the thank-you page once the iframe has loaded
+  // AFTER an actual form submission (its very first load, before any
+  // submit, should not trigger a redirect).
+  hiddenLeadIframe.addEventListener('load', function(){
+    if(leadFormSubmitting){
+      window.location.href = 'thank-you.html';
+    }
+  });
+
+  trialForm.addEventListener('submit', function(e){
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
 
     if(!isValidName(name)){
+      e.preventDefault();
       nameInput.classList.add('invalid');
       nameInput.focus();
       return;
     }
 
     if(!isValidPhone(phone)){
+      e.preventDefault();
       phoneInput.classList.add('invalid');
       phoneInput.focus();
       return;
     }
 
-    const locationSelect = document.getElementById('location');
-    const location = locationSelect.options[locationSelect.selectedIndex].text;
-    const msg = (currentLang === 'ar')
-      ? `أهلاً Slim Fit EMS! عايز أحجز جلسة تجريبية مجانية.\nالاسم: ${name}\nالموبايل: ${phone}\nالفرع: ${location}`
-      : `Hi Slim Fit EMS! I'd like to book a free trial session.\nName: ${name}\nPhone: ${phone}\nPreferred branch: ${location}`;
-    window.open(waLink(msg), '_blank');
+    if(!LEAD_FORM_ENDPOINT || LEAD_FORM_ENDPOINT.indexOf('PASTE_YOUR') === 0){
+      e.preventDefault();
+      alert('Lead form is not connected yet — set LEAD_FORM_ENDPOINT in the code to your Google Apps Script Web App URL.');
+      return;
+    }
+
+    document.getElementById('lang-field').value = currentLang;
+    trialForm.action = LEAD_FORM_ENDPOINT;
+
+    const submitBtn = document.getElementById('form-submit-btn');
+    submitBtn.disabled = true;
+
+    // Let the browser submit the form naturally to the hidden iframe
+    // (no fetch/CORS needed — this is the classic, reliable pattern
+    // for posting to Google Apps Script from a static site).
+    leadFormSubmitting = true;
   });
 </script>
 
