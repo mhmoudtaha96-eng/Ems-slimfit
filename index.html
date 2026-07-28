@@ -241,6 +241,15 @@
     font-size:17px;max-width:46ch;margin-bottom:30px;
   }
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px;}
+  .btn-glow{
+    box-shadow:0 0 0 0 rgba(47,232,212,0.55);
+    animation:btnGlow 2.2s ease-in-out infinite;
+  }
+  @keyframes btnGlow{
+    0%{ box-shadow:0 0 0 0 rgba(47,232,212,0.55); }
+    70%{ box-shadow:0 0 0 14px rgba(47,232,212,0); }
+    100%{ box-shadow:0 0 0 0 rgba(47,232,212,0); }
+  }
   .hero-note{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
 
   .pulse-card{
@@ -630,10 +639,9 @@
         <h1 data-i18n="hero-h1">One 20-minute session.<br>Every muscle fires <em>at once.</em></h1>
         <p class="lead" data-i18n="hero-lead">Slim Fit EMS straps you into a suit that sends your muscles the same signal your brain does — to more fibers, all at once. 20 minutes in, and you've trained like you were at the gym for 90.</p>
         <div class="hero-cta">
-          <a class="btn btn-volt" id="wa-hero" href="#" target="_blank" rel="noopener" data-i18n="hero-cta1">
-            Book free trial on WhatsApp
+          <a class="btn btn-volt btn-glow" id="hero-cta-btn" href="#offer" data-i18n="hero-cta1">
+            Book free trial
           </a>
-          <a class="btn btn-ghost" href="#offer" data-i18n="hero-cta2">Fill the form instead</a>
         </div>
         <div class="hero-note">
           <span class="mono" data-i18n="hero-note">NO SUIT TO BUY · NO GYM CLOTHES NEEDED</span>
@@ -1032,8 +1040,7 @@
     "hero-tagline":{en:"Fitness · Nutrition · Pain Relief",ar:"لياقة · تغذية · علاج الألم"},
     "hero-h1":{en:"One 20-minute session.<br>Every muscle fires <em>at once.</em>",ar:"جلسة واحدة، 20 دقيقة.<br>كل عضلاتك تشتغل <em>في نفس اللحظة.</em>"},
     "hero-lead":{en:"Slim Fit EMS straps you into a suit that sends your muscles the same signal your brain does — to more fibers, all at once. 20 minutes in, and you've trained like you were at the gym for 90.",ar:"Slim Fit EMS بتلبسك بدلة بتبعت لعضلاتك نفس الإشارة اللي مخك بيبعتها — لعدد أكبر من الألياف في نفس الوقت. 20 دقيقة تمرين تحسها زي إنك اتمرنت 90 دقيقة في الجيم."},
-    "hero-cta1":{en:"Book free trial on WhatsApp",ar:"احجز جلستك المجانية على واتساب"},
-    "hero-cta2":{en:"Fill the form instead",ar:"أو املا الفورم"},
+    "hero-cta1":{en:"Book free trial",ar:"احجز جلستك المجانية"},
     "hero-note":{en:"NO SUIT TO BUY · NO GYM CLOTHES NEEDED",ar:"مفيش بدلة تشتريها · مفيش لبس رياضي مطلوب"},
     "pulse-label1":{en:"MUSCLE SIGNAL",ar:"إشارة العضلة"},
     "pulse-label2":{en:"● LIVE READOUT",ar:"● قراءة مباشرة"},
@@ -1374,7 +1381,6 @@
   function refreshWaLinks(){
     const msg = waMessages[currentLang];
     document.getElementById('wa-header').href = waLink(msg);
-    document.getElementById('wa-hero').href = waLink(msg);
     document.getElementById('wa-footer').href = waLink(msg);
     document.getElementById('wa-float').href = waLink(msg);
   }
