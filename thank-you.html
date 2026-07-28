@@ -11,23 +11,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 
 <!-- =====================================================================
-     TRACKING PIXELS — paste your ad-platform code below.
-     This page only loads AFTER a real form submission, so any "Lead" /
-     "Conversion" event fired here only counts real leads — put your
-     Meta Pixel and Google Ads conversion tags in the two blocks below.
+     TRACKING PIXELS
+     This page only loads AFTER a real form submission, so both tags
+     below only fire for genuine leads.
+
+     You only need to replace the CAPITALIZED placeholder values —
+     do not change anything else in these blocks.
      ===================================================================== -->
 
-<!-- 1) META (Facebook/Instagram) PIXEL — paste your base code + Lead event here -->
-<!--
+<!-- 1) META (Facebook/Instagram) PIXEL
+     Get your Pixel ID: Meta Events Manager → Data Sources → your Pixel → Settings
+     https://business.facebook.com/events_manager
+     Replace YOUR_META_PIXEL_ID below with that numeric ID. -->
 <script>
-!function(f,b,e,v,n,t,s){...}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', 'YOUR_PIXEL_ID');
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'YOUR_META_PIXEL_ID');
 fbq('track', 'Lead');
 </script>
--->
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=YOUR_META_PIXEL_ID&ev=Lead&noscript=1"
+/></noscript>
 
-<!-- 2) GOOGLE ADS CONVERSION TAG — paste your gtag conversion snippet here -->
-<!--
+<!-- 2) GOOGLE ADS CONVERSION TAG
+     Get these values: Google Ads → Tools & Settings → Conversions →
+     your "Trial Form Lead" conversion action → the code snippet it shows you.
+     Replace AW-XXXXXXXXX and YOUR_CONVERSION_LABEL below. -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -36,7 +51,6 @@ fbq('track', 'Lead');
   gtag('config', 'AW-XXXXXXXXX');
   gtag('event', 'conversion', {'send_to': 'AW-XXXXXXXXX/YOUR_CONVERSION_LABEL'});
 </script>
--->
 <!-- ===================================================================== -->
 
 <style>
@@ -87,8 +101,7 @@ fbq('track', 'Lead');
     <h1>You're all set — thanks!</h1>
     <p>We've received your details. Our team will contact you within the day to confirm your free trial session.</p>
     <div class="actions">
-      <a class="btn btn-volt" href="https://wa.me/201030033581" target="_blank" rel="noopener">Message us on WhatsApp now</a>
-      <a class="btn btn-ghost" href="index.html">Back to homepage</a>
+      <a class="btn btn-volt" href="index.html">Back to homepage</a>
     </div>
   </div>
 
