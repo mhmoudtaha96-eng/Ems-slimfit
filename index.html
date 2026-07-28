@@ -134,8 +134,18 @@
   .logo span{color:var(--voltage);}
   .logo .bolt{width:16px;height:16px;color:var(--voltage);flex:none;}
   .nav-right{display:flex;align-items:center;gap:14px;}
-  .nav-links{display:flex;gap:18px;font-size:13.5px;color:var(--muted);flex-wrap:wrap;}
+  .nav-links{display:flex;gap:18px;font-size:13.5px;color:var(--muted);flex-wrap:wrap;align-items:center;}
   .nav-links a:hover{color:var(--bone);}
+  .nav-glow{
+    color:var(--voltage) !important;
+    font-weight:600;
+    border:1px solid var(--voltage-dim);
+    border-radius:999px;
+    padding:6px 14px;
+    box-shadow:0 0 0 0 rgba(47,232,212,0.55);
+    animation:btnGlow 2.2s ease-in-out infinite;
+  }
+  .nav-glow:hover{ color:var(--ink) !important; background:var(--voltage); }
   .lang-toggle{
     font-family:'IBM Plex Mono',monospace;
     font-size:12px;letter-spacing:0.06em;
@@ -608,6 +618,7 @@
     </a>
     <div class="nav-right">
       <nav class="nav-links" id="nav-links">
+        <a href="#offer" class="nav-glow" data-i18n="nav-offer">Free trial</a>
         <a href="#how" data-i18n="nav-how">How it works</a>
         <a href="#why" data-i18n="nav-why">Why EMS</a>
         <a href="#about" data-i18n="nav-about">Find Us</a>
@@ -615,7 +626,6 @@
         <a href="#gallery" data-i18n="nav-gallery">Gallery</a>
         <a href="#pricing" data-i18n="nav-pricing">Pricing</a>
         <a href="#faq" data-i18n="nav-faq">FAQ</a>
-        <a href="#offer" data-i18n="nav-offer">Free trial</a>
       </nav>
       <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">العربية</button>
       <a class="btn btn-volt btn-sm" id="wa-header" href="#" target="_blank" rel="noopener" data-i18n="nav-wa">WhatsApp us</a>
