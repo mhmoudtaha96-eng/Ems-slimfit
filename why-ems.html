@@ -1098,6 +1098,15 @@
     document.getElementById('wa-float').href = waLink(msg);
   }
 
+  const LANG_STORAGE_KEY = 'slimfit_lang';
+
+  function saveLang(lang){
+    try{ localStorage.setItem(LANG_STORAGE_KEY, lang); }catch(e){ /* ignore (privacy mode etc.) */ }
+  }
+  function loadSavedLang(){
+    try{ return localStorage.getItem(LANG_STORAGE_KEY); }catch(e){ return null; }
+  }
+
   function setLanguage(lang){
     currentLang = lang;
     document.documentElement.lang = lang;
@@ -1114,15 +1123,14 @@
     refreshWaLinks();
     renderPricing(lang);
     renderFAQ(lang);
+    saveLang(lang);
   }
 
   document.getElementById('lang-toggle').addEventListener('click', function(){
     setLanguage(currentLang === 'en' ? 'ar' : 'en');
   });
 
-  refreshWaLinks();
-  renderPricing(currentLang);
-  renderFAQ(currentLang);
+  setLanguage(loadSavedLang() || 'en');
 
 </script>
 
