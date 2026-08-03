@@ -90,6 +90,8 @@ fbq('track', 'Lead');
   }
   .btn-ghost:hover{ border-color:var(--voltage); color:var(--voltage); }
   .actions{ display:flex; flex-direction:column; gap:0; }
+
+  html[dir="rtl"] body, html[dir="rtl"] h1{ font-family:'Tajawal',sans-serif; }
 </style>
 </head>
 <body>
@@ -98,12 +100,32 @@ fbq('track', 'Lead');
     <div class="check">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
     </div>
-    <h1>You're all set — thanks!</h1>
-    <p>We've received your details. Our team will contact you within the day to confirm your free trial session.</p>
+    <h1 data-i18n="ty-h1">You're all set — thanks!</h1>
+    <p data-i18n="ty-p">We've received your details. Our team will contact you within the day to confirm your free trial session.</p>
     <div class="actions">
-      <a class="btn btn-volt" href="index.html">Back to homepage</a>
+      <a class="btn btn-volt" href="index.html" data-i18n="ty-btn">Back to homepage</a>
     </div>
   </div>
+
+<script>
+  const translations = {
+    "ty-h1": {en:"You're all set — thanks!", ar:"تمام، خلصنا! شكرًا ليك."},
+    "ty-p": {en:"We've received your details. Our team will contact you within the day to confirm your free trial session.", ar:"استلمنا بياناتك. فريقنا هيتواصل معاك خلال نفس اليوم لتأكيد جلستك التجريبية المجانية."},
+    "ty-btn": {en:"Back to homepage", ar:"رجوع للصفحة الرئيسية"}
+  };
+
+  function loadSavedLang(){
+    try{ return localStorage.getItem('slimfit_lang'); }catch(e){ return null; }
+  }
+
+  const lang = loadSavedLang() || 'en';
+  document.documentElement.lang = lang;
+  document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    const key = el.getAttribute('data-i18n');
+    if(translations[key]) el.textContent = translations[key][lang];
+  });
+</script>
 
 </body>
 </html>
