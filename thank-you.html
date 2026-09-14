@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10811501642"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-10811501642');
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thanks — Slim Fit EMS</title>
@@ -39,16 +48,13 @@ fbq('track', 'Lead');
   src="https://www.facebook.com/tr?id=YOUR_META_PIXEL_ID&ev=Lead&noscript=1"
 /></noscript>
 
-<!-- 2) GOOGLE ADS CONVERSION TAG
-     Get these values: Google Ads → Tools & Settings → Conversions →
+<!-- 2) GOOGLE ADS CONVERSION EVENT
+     Get this value: Google Ads → Tools & Settings → Conversions →
      your "Trial Form Lead" conversion action → the code snippet it shows you.
-     Replace YOUR_CONVERSION_LABEL below with the label from that same snippet. -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10811501642"></script>
+     The base Google tag is already loaded once at the top of this page,
+     so only the conversion event fires here — replace YOUR_CONVERSION_LABEL
+     below with the label from that snippet. -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-10811501642');
   gtag('event', 'conversion', {'send_to': 'AW-10811501642/YOUR_CONVERSION_LABEL'});
 </script>
 <!-- ===================================================================== -->
