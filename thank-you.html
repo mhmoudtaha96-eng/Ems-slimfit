@@ -7,7 +7,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'AW-10811501642');
+  gtag('config', 'AW-10811501642', { 'transport_type': 'beacon' });
 </script>
 
 <meta charset="UTF-8">
@@ -55,7 +55,10 @@ fbq('track', 'Lead');
      so only the conversion event fires here — replace YOUR_CONVERSION_LABEL
      below with the label from that snippet. -->
 <script>
-  gtag('event', 'conversion', {'send_to': 'AW-10811501642/hw1OCODotfccEMrYqaMo'});
+  gtag('event', 'conversion', {
+    'send_to': 'AW-10811501642/hw1OCODotfccEMrYqaMo',
+    'transport_type': 'beacon'
+  });
 </script>
 <!-- ===================================================================== -->
 
