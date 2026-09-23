@@ -2,12 +2,12 @@
 <html lang="en" dir="ltr">
 <head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10811501642"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18459845637"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'AW-10811501642');
+  gtag('config', 'AW-18459845637');
 </script>
 
 <meta charset="UTF-8">
@@ -1579,13 +1579,20 @@
   const trialForm = document.getElementById('trial-form');
   const hiddenLeadIframe = document.getElementById('hidden_lead_iframe');
   let leadFormSubmitting = false;
+  let leadRedirected = false;
 
-  // Only redirect to the thank-you page once the iframe has loaded
-  // AFTER an actual form submission (its very first load, before any
-  // submit, should not trigger a redirect).
+  function goToThankYou(){
+    if(leadRedirected) return; // never redirect twice
+    leadRedirected = true;
+    window.location.href = 'thank-you.html';
+  }
+
+  // Primary path: redirect once the iframe has loaded AFTER an actual
+  // form submission (its very first load, before any submit, should
+  // not trigger a redirect).
   hiddenLeadIframe.addEventListener('load', function(){
     if(leadFormSubmitting){
-      window.location.href = 'thank-you.html';
+      goToThankYou();
     }
   });
 
@@ -1623,6 +1630,13 @@
     // (no fetch/CORS needed — this is the classic, reliable pattern
     // for posting to Google Apps Script from a static site).
     leadFormSubmitting = true;
+
+    // Fallback: some mobile in-app browsers (Instagram/Facebook/WhatsApp
+    // in-app browsers, some privacy-mode Safari) don't reliably fire the
+    // iframe's load event for cross-origin posts. If we haven't redirected
+    // within 2.5s of a valid submit, redirect anyway — by then the POST
+    // has almost certainly reached the server even if we never heard back.
+    setTimeout(goToThankYou, 2500);
   });
 </script>
 
