@@ -1082,6 +1082,53 @@
     try{ return localStorage.getItem(LANG_STORAGE_KEY); }catch(e){ return null; }
   }
 
+  // Reads ?lang=ar or ?lang=en straight from the URL. This lets an ad (or
+  // any link) force a specific language the instant the page loads, for
+  // a brand-new visitor with nothing saved yet — no flash of English.
+  function getUrlLang(){
+    try{
+      const params = new URLSearchParams(window.location.search);
+      const l = params.get('lang');
+      return (l === 'ar' || l === 'en') ? l : null;
+    }catch(e){ return null; }
+  }
+
+  // Keeps the address bar in sync with the chosen language (adds ?lang=ar,
+  // removes it for English) without reloading the page.
+  function updateUrlForLang(lang){
+    try{
+      const url = new URL(window.location.href);
+      if(lang === 'ar'){ url.searchParams.set('lang', 'ar'); }
+      else{ url.searchParams.delete('lang'); }
+      const qs = url.searchParams.toString();
+      history.replaceState(null, '', url.pathname + (qs ? '?' + qs : '') + url.hash);
+    }catch(e){ /* ignore */ }
+  }
+
+  // Carries the current language into every internal same-site link (nav,
+  // logo, footer, cross-page buttons) so clicking through the site keeps
+  // the visitor — and the URL — in the same language. External links
+  // (WhatsApp, Maps, http(s)://, mailto:, tel:, #anchors) are left alone.
+  function applyLangToInternalLinks(lang){
+    document.querySelectorAll('a[href]').forEach(function(a){
+      const href = a.getAttribute('href');
+      if(!href) return;
+      if(/^([a-z]+:)?\/\//i.test(href)) return; // absolute / protocol-relative (external)
+      if(href.indexOf('#') === 0) return;
+      if(/^(mailto:|tel:)/i.test(href)) return;
+      const hashSplit = href.split('#');
+      const pathAndQuery = hashSplit[0];
+      if(!/\.html(\?.*)?$/.test(pathAndQuery)) return; // only our own .html pages
+      const [path, query] = pathAndQuery.split('?');
+      const params = new URLSearchParams(query || '');
+      if(lang === 'ar'){ params.set('lang', 'ar'); }
+      else{ params.delete('lang'); }
+      const qs = params.toString();
+      const hashPart = hashSplit.length > 1 ? '#' + hashSplit.slice(1).join('#') : '';
+      a.setAttribute('href', path + (qs ? '?' + qs : '') + hashPart);
+    });
+  }
+
   function setLanguage(lang){
     currentLang = lang;
     document.documentElement.lang = lang;
@@ -1096,6 +1143,8 @@
     });
     document.getElementById('lang-toggle').textContent = (lang === 'ar') ? 'English' : 'العربية';
     refreshWaLinks();
+    applyLangToInternalLinks(lang);
+    updateUrlForLang(lang);
     renderPricing(lang);
     renderFAQ(lang);
     saveLang(lang);
@@ -1105,7 +1154,7 @@
     setLanguage(currentLang === 'en' ? 'ar' : 'en');
   });
 
-  setLanguage(loadSavedLang() || 'en');
+  setLanguage(getUrlLang() || loadSavedLang() || 'en');
 
 </script>
 
