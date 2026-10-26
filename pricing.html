@@ -642,9 +642,72 @@
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:0.001s !important; animation-iteration-count:1 !important; transition:none !important;}
   }
+
+  /* ---------- Black Friday ---------- */
+  .bf-bar{ background:#000; border-bottom:1px solid #3a3000; color:#fff; font-size:13.5px; position:relative; z-index:55; }
+  .bf-bar[hidden]{ display:none !important; }
+  .bf-bar-inner{
+    max-width:1120px; margin:0 auto; padding:9px 24px;
+    display:flex; align-items:center; justify-content:center;
+    gap:8px 14px; flex-wrap:wrap; text-align:center;
+  }
+  .bf-bar-tag{
+    background:#ffcf4a; color:#000; font-weight:800; font-size:11px;
+    letter-spacing:0.08em; padding:3px 10px; border-radius:999px; white-space:nowrap;
+  }
+  html[dir="rtl"] .bf-bar-tag{ letter-spacing:0; font-family:'Tajawal',sans-serif; font-size:12px; }
+  .bf-bar-text strong{ color:#ffcf4a; }
+  .bf-bar-ends{ color:var(--muted); font-size:12px; }
+  .bf-bar-timer{
+    font-family:'IBM Plex Mono',monospace; color:#ffcf4a; font-weight:600;
+    font-size:13px; white-space:nowrap;
+  }
+  .bf-bar-cta{
+    background:#ffcf4a; color:#000; font-weight:700; font-size:12.5px;
+    padding:6px 16px; border-radius:999px; white-space:nowrap;
+    box-shadow:0 0 0 0 rgba(255,207,74,0.6);
+    animation:bfGlow 2.2s ease-in-out infinite;
+  }
+  .bf-bar-cta:hover{ background:#fff; }
+  @keyframes bfGlow{
+    0%{ box-shadow:0 0 0 0 rgba(255,207,74,0.6); }
+    70%{ box-shadow:0 0 0 12px rgba(255,207,74,0); }
+    100%{ box-shadow:0 0 0 0 rgba(255,207,74,0); }
+  }
+  .bf-hero-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,207,74,0.1); border:1px solid #ffcf4a; color:#ffcf4a;
+    border-radius:999px; padding:6px 14px; font-size:12.5px; font-weight:600;
+    margin-bottom:16px;
+  }
+  .bf-hero-tag[hidden]{ display:none !important; }
+  .bf-hero-tag::before{
+    content:""; width:7px; height:7px; border-radius:50%; background:#ffcf4a;
+    box-shadow:0 0 10px #ffcf4a; animation:blink 1.6s ease-in-out infinite; flex:none;
+  }
+  .price-bonus{
+    display:inline-flex; align-items:center; gap:6px; width:fit-content;
+    background:#ffcf4a; color:#000; font-size:12px; font-weight:800;
+    padding:5px 11px; border-radius:999px;
+  }
+  .price-bonus svg{ width:14px; height:14px; flex:none; }
+  @media (max-width:480px){
+    .bf-bar{ font-size:12.5px; }
+    .bf-bar-inner{ padding:8px 14px; }
+  }
 </style>
 </head>
 <body>
+
+<div class="bf-bar" id="bf-bar" hidden>
+  <div class="bf-bar-inner">
+    <span class="bf-bar-tag" data-bf="tag">BLACK FRIDAY</span>
+    <span class="bf-bar-text" data-bf="text">Get <strong>1 month FREE</strong> with any subscription from 2 months!</span>
+    <span class="bf-bar-ends" data-bf="ends">Ends in</span>
+    <span class="bf-bar-timer" id="bf-timer" dir="ltr"></span>
+    <a class="bf-bar-cta" href="trial.html" data-bf="cta">Book now</a>
+  </div>
+</div>
 
 <header>
   <div class="nav">
@@ -857,6 +920,89 @@
     ar:"أهلاً Slim Fit EMS! عايز/عايزة أحجز جلستي التجريبية المجانية."
   };
 
+  /* =========================================================
+     BLACK FRIDAY — change these two dates to change the campaign.
+     The top banner, countdown, homepage tag and "+1 FREE MONTH"
+     badges switch on and off by themselves — nothing to upload on
+     the last day. Times are Cairo time (UTC+02:00 in November).
+     ========================================================= */
+  const BF_START = new Date('2026-10-26T00:00:00+02:00');
+  const BF_END   = new Date('2026-11-30T23:59:59+02:00');
+
+  function isBlackFridayActive(){
+    const now = Date.now();
+    return now >= BF_START.getTime() && now <= BF_END.getTime();
+  }
+
+  const BF_TEXT = {
+    en:{
+      tag:'BLACK FRIDAY',
+      text:'Get <strong>1 month FREE</strong> with any subscription from 2 months!',
+      ends:'Ends in',
+      cta:'Book now',
+      hero:'BLACK FRIDAY · 1 MONTH FREE on any 2+ month package',
+      bonus:'+ 1 FREE MONTH',
+      units:['d','h','m','s']
+    },
+    ar:{
+      tag:'بلاك فرايدي',
+      text:'احصل على <strong>شهر مجاني</strong> مع أي اشتراك من شهرين!',
+      ends:'ينتهي خلال',
+      cta:'احجز الآن',
+      hero:'بلاك فرايدي · شهر مجاني مع أي باقة شهرين فأكثر',
+      bonus:'+ شهر مجاني',
+      units:['d','h','m','s']
+    }
+  };
+
+  let bfTimerId = null;
+
+  function bfPad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function bfHideAll(){
+    const bar = document.getElementById('bf-bar');
+    const hero = document.getElementById('bf-hero-tag');
+    if(bar) bar.hidden = true;
+    if(hero) hero.hidden = true;
+  }
+
+  function bfTick(){
+    const timer = document.getElementById('bf-timer');
+    if(!isBlackFridayActive()){
+      // Offer just ended (or hasn't started): stop, hide, restore normal prices.
+      if(bfTimerId){ clearInterval(bfTimerId); bfTimerId = null; }
+      bfHideAll();
+      renderPricing(currentLang);
+      return;
+    }
+    if(!timer) return;
+    const secs = Math.max(0, Math.floor((BF_END.getTime() - Date.now()) / 1000));
+    const d = Math.floor(secs / 86400);
+    const h = Math.floor((secs % 86400) / 3600);
+    const m = Math.floor((secs % 3600) / 60);
+    const s = secs % 60;
+    const u = (BF_TEXT[currentLang] || BF_TEXT.en).units;
+    timer.textContent = d + u[0] + ' ' + bfPad(h) + u[1] + ' ' + bfPad(m) + u[2] + ' ' + bfPad(s) + u[3];
+  }
+
+  function renderBlackFriday(lang){
+    const t = BF_TEXT[lang] || BF_TEXT.en;
+    document.querySelectorAll('[data-bf]').forEach(function(el){
+      const k = el.getAttribute('data-bf');
+      if(t[k]) el.innerHTML = t[k];
+    });
+    if(!isBlackFridayActive()){
+      bfHideAll();
+      return;
+    }
+    const bar = document.getElementById('bf-bar');
+    const hero = document.getElementById('bf-hero-tag');
+    if(bar) bar.hidden = false;
+    if(hero) hero.hidden = false;
+    bfTick();
+    if(!bfTimerId) bfTimerId = setInterval(bfTick, 1000);
+  }
+
   const PRICING_PLANS = [
     {
       nameEn: "1 Month", nameAr: "شهر واحد",
@@ -867,6 +1013,7 @@
     },
     {
       nameEn: "2 Months", nameAr: "شهرين",
+      bfBonus: true,
       sessions: 8,
       price: 3200,
       discountPercent: 10,
@@ -874,6 +1021,7 @@
     },
     {
       nameEn: "3 Months", nameAr: "3 شهور",
+      bfBonus: true,
       sessions: 12,
       price: 4400,
       discountPercent: 15,
@@ -881,6 +1029,7 @@
     },
     {
       nameEn: "3 Months Pro Active", nameAr: "3 شهور برو أكتيف",
+      bfBonus: true,
       sessions: 24,
       sessionsNoteEn: "2 sessions / week",
       sessionsNoteAr: "جلستين في الأسبوع",
@@ -890,6 +1039,7 @@
     },
     {
       nameEn: "6 Months", nameAr: "6 شهور",
+      bfBonus: true,
       sessions: 24,
       price: 7500,
       discountPercent: 10,
@@ -897,6 +1047,7 @@
     },
     {
       nameEn: "1 Year", nameAr: "سنة كاملة",
+      bfBonus: true,
       sessions: 48,
       price: 14100,
       discountPercent: 36.52482269503546,
@@ -912,8 +1063,10 @@
     if(!grid) return;
     grid.innerHTML = '';
     PRICING_PLANS.forEach(function(plan){
-      const finalPrice = plan.discountPercent > 0
-        ? Math.round(plan.price * (1 - plan.discountPercent / 100))
+      const bfOn = isBlackFridayActive();
+      const pct = bfOn ? 0 : plan.discountPercent; // Black Friday replaces % discounts with the free month
+      const finalPrice = pct > 0
+        ? Math.round(plan.price * (1 - pct / 100))
         : plan.price;
       const sessionsLabel = lang === 'ar'
         ? `${plan.sessions} جلسة`
@@ -927,9 +1080,10 @@
         <div class="price-sessions">${sessionsLabel}${noteLabel ? ' · ' + noteLabel : ''}</div>
         <div class="price-amount-row">
           <div class="price-amount">${egp(finalPrice)} <span style="font-size:14px;">EGP</span></div>
-          ${plan.discountPercent > 0 ? `<div class="price-original">${egp(plan.price)}</div>` : ''}
+          ${pct > 0 ? `<div class="price-original">${egp(plan.price)}</div>` : ''}
         </div>
-        ${(plan.discountPercent > 0 && !plan.hideDiscountBadge) ? `<div class="price-discount">${lang === 'ar' ? 'خصم' : 'SAVE'} ${Math.round(plan.discountPercent)}%</div>` : ''}
+        ${(pct > 0 && !plan.hideDiscountBadge) ? `<div class="price-discount">${lang === 'ar' ? 'خصم' : 'SAVE'} ${Math.round(pct)}%</div>` : ''}
+        ${(bfOn && plan.bfBonus) ? `<div class="price-bonus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v9h14v-9M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg>${(BF_TEXT[lang] || BF_TEXT.en).bonus}</div>` : ''}
         <a class="btn ${plan.featured ? 'btn-volt' : 'btn-ghost'}" target="_blank" rel="noopener" href="${waLink((lang === 'ar' ? 'أهلاً! عايز أعرف تفاصيل باقة ' : 'Hi! I would like details on the ') + (lang === 'ar' ? plan.nameAr : plan.nameEn) + (lang === 'ar' ? ' باقة.' : ' package.'))}">
           ${lang === 'ar' ? 'اسأل على واتساب' : 'Ask on WhatsApp'}
         </a>
@@ -1137,6 +1291,7 @@
     updateUrlForLang(lang);
     renderPricing(lang);
     renderFAQ(lang);
+    renderBlackFriday(lang);
     saveLang(lang);
   }
 
