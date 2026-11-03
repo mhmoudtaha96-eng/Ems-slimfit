@@ -1445,6 +1445,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
     document.getElementById('lang-field').value = currentLang;
     trialForm.action = LEAD_FORM_ENDPOINT;
+    try { sessionStorage.setItem('slimfit_lead_phone', phone); } catch(err){}
 
     const submitBtn = document.getElementById('form-submit-btn');
     submitBtn.disabled = true;

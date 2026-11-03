@@ -18,11 +18,36 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
   ttq.load('DBKR91RC77U4J2JQSC4G');
   ttq.page();
-  // Lead conversion: only on the thank-you page (after a form submission)
-  ttq.track('SubmitForm');
 }(window, document, 'ttq');
 </script>
 <!-- TikTok Pixel Code End -->
+<script>
+/* TikTok lead event — fires only here, after a real form submission.
+   The phone number saved by the form is hashed (SHA-256) in the browser
+   before it is sent, as TikTok requires. */
+(function(){
+  function sendLead(){
+    ttq.track('Lead', {
+      contents: [{ content_id: 'free-trial', content_type: 'product', content_name: 'Free trial form' }],
+      currency: 'EGP',
+      status: 'submitted'
+    });
+  }
+  var phone = '';
+  try { phone = sessionStorage.getItem('slimfit_lead_phone') || ''; } catch(e){}
+  var digits = phone.replace(/\D/g,'');
+  if(digits.length === 11 && digits.charAt(0) === '0') digits = '2' + digits;  // Egypt: 01xxxxxxxxx -> 201xxxxxxxxx
+  if(digits && window.crypto && crypto.subtle && window.TextEncoder){
+    crypto.subtle.digest('SHA-256', new TextEncoder().encode('+' + digits)).then(function(buf){
+      var hex = Array.prototype.map.call(new Uint8Array(buf), function(b){ return ('0'+b.toString(16)).slice(-2); }).join('');
+      ttq.identify({ phone_number: hex });
+      sendLead();
+    }).catch(sendLead);
+  } else {
+    sendLead();
+  }
+})();
+</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
