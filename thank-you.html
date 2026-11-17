@@ -33,8 +33,16 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       status: 'submitted'
     });
   }
-  var phone = '';
-  try { phone = sessionStorage.getItem('slimfit_lead_phone') || ''; } catch(e){}
+  // Fire once per real submission: trial.html saves the phone when the form is
+  // submitted; we consume it here. A refresh or a direct visit to this page
+  // finds nothing and does not fire again. If browser storage is blocked
+  // we cannot tell, so we fire (better one lead too many than a lost one).
+  var phone = '', storageOk = true;
+  try {
+    phone = sessionStorage.getItem('slimfit_lead_phone') || '';
+    sessionStorage.removeItem('slimfit_lead_phone');
+  } catch(e){ storageOk = false; }
+  if(storageOk && !phone) return;
   var digits = phone.replace(/\D/g,'');
   if(digits.length === 11 && digits.charAt(0) === '0') digits = '2' + digits;  // Egypt: 01xxxxxxxxx -> 201xxxxxxxxx
   if(digits && window.crypto && crypto.subtle && window.TextEncoder){
