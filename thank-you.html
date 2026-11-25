@@ -21,12 +21,30 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 }(window, document, 'ttq');
 </script>
 <!-- TikTok Pixel Code End -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1554657296424731');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1554657296424731&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <script>
 /* TikTok lead event — fires only here, after a real form submission.
    The phone number saved by the form is hashed (SHA-256) in the browser
    before it is sent, as TikTok requires. */
 (function(){
   function sendLead(){
+    if(window.fbq) fbq('track', 'Lead', { content_name: 'Free trial form', status: 'submitted' });
     ttq.track('Lead', {
       contents: [{ content_id: 'free-trial', content_type: 'product', content_name: 'Free trial form' }],
       currency: 'EGP',
@@ -49,7 +67,12 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     crypto.subtle.digest('SHA-256', new TextEncoder().encode('+' + digits)).then(function(buf){
       var hex = Array.prototype.map.call(new Uint8Array(buf), function(b){ return ('0'+b.toString(16)).slice(-2); }).join('');
       ttq.identify({ phone_number: hex });
-      sendLead();
+      // Meta: hashed phone (digits only, with country code) for better matching, then Lead
+      crypto.subtle.digest('SHA-256', new TextEncoder().encode(digits)).then(function(b2){
+        var hex2 = Array.prototype.map.call(new Uint8Array(b2), function(x){ return ('0'+x.toString(16)).slice(-2); }).join('');
+        if(window.fbq) fbq('init', '1554657296424731', { ph: hex2 });
+        sendLead();
+      }).catch(sendLead);
     }).catch(sendLead);
   } else {
     sendLead();
@@ -75,25 +98,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
      do not change anything else in these blocks.
      ===================================================================== -->
 
-<!-- 1) META (Facebook/Instagram) PIXEL
-     Get your Pixel ID: Meta Events Manager → Data Sources → your Pixel → Settings
-     https://business.facebook.com/events_manager
-     Replace YOUR_META_PIXEL_ID below with that numeric ID. -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', 'YOUR_META_PIXEL_ID');
-fbq('track', 'Lead');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=YOUR_META_PIXEL_ID&ev=Lead&noscript=1"
-/></noscript>
 
 <!-- 2) GOOGLE ADS CONVERSION EVENT
      Get this value: Google Ads → Tools & Settings → Conversions →
