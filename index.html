@@ -1108,6 +1108,15 @@ try{ if(!sessionStorage.getItem('slimfit_landing')){ sessionStorage.setItem('sli
           </div>
           <input type="hidden" name="lang" id="lang-field" value="en">
           <input type="hidden" name="source" value="website-trial-form">
+          <input type="hidden" name="landing" id="f-landing">
+          <input type="hidden" name="referrer" id="f-referrer">
+          <input type="hidden" name="ua" id="f-ua">
+          <input type="hidden" name="secs" id="f-secs">
+          <input type="hidden" name="page" id="f-page">
+          <!-- honeypot: real people never see or fill this; bots do -->
+          <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+            <label>Website <input type="text" name="website" id="f-hp" tabindex="-1" autocomplete="off"></label>
+          </div>
           <button type="submit" class="btn btn-volt" id="form-submit-btn" data-i18n="form-submit">Send &amp; claim my free session</button>
           <div class="form-note" data-i18n="form-note">We'll save your details and contact you within the day to confirm your session.</div>
         </form>
@@ -1780,6 +1789,7 @@ try{ if(!sessionStorage.getItem('slimfit_landing')){ sessionStorage.setItem('sli
 
   const trialForm = document.getElementById('trial-form');
   const hiddenLeadIframe = document.getElementById('hidden_lead_iframe');
+  const PAGE_OPENED_AT = Date.now();
   let leadFormSubmitting = false;
   let leadRedirected = false;
 
@@ -1823,7 +1833,15 @@ try{ if(!sessionStorage.getItem('slimfit_landing')){ sessionStorage.setItem('sli
     }
 
     document.getElementById('lang-field').value = currentLang;
+    try{
+      document.getElementById('f-landing').value  = sessionStorage.getItem('slimfit_landing') || '';
+      document.getElementById('f-referrer').value = sessionStorage.getItem('slimfit_ref') || document.referrer || '';
+    }catch(err){}
+    document.getElementById('f-ua').value   = navigator.userAgent || '';
+    document.getElementById('f-page').value = location.href;
+    document.getElementById('f-secs').value = Math.round((Date.now() - PAGE_OPENED_AT) / 1000);
     trialForm.action = LEAD_FORM_ENDPOINT;
+    try { sessionStorage.setItem('slimfit_lead_phone', phone); } catch(err){}
 
     const submitBtn = document.getElementById('form-submit-btn');
     submitBtn.disabled = true;
